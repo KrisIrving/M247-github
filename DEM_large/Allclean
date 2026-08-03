@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm log.liggghts && rm -r post  
+
+rm terminal.log

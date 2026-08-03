@@ -1,0 +1,13 @@
+#!/bin/sh
+
+LIGGGHTS_EXEC=/home/kris/CFDEM/LIGGGHTS/src-build/liggghts
+
+rm -rf post
+mkdir -p post
+
+$LIGGGHTS_EXEC -in input.liggghts -log log.liggghts 2>&1 | tee terminal.log
+
+
+# liggghts < input.liggghts
+
+# cp /post/location ../constant
