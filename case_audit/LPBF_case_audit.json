@@ -1,0 +1,608 @@
+{
+  "audit": {
+    "generated_at": "2026-08-03T17:07:43+08:00",
+    "case_root": "/media/kris/one/M247/M247-github",
+    "git_revision": "bb16b35091536e3f0498325a9c20e0404a1d0b63",
+    "script_version": "1.1.0"
+  },
+  "workflow": {
+    "serial_commands": [
+      "blockMesh",
+      "setSolidFraction",
+      "transformPoints \"rotate=((0 1 0) (0 0 1))\"",
+      "laserbeamFoam"
+    ],
+    "controlDict_application": "Flint_multiphaseEulerFoamD",
+    "actual_solver": "laserbeamFoam",
+    "startFrom": "latestTime"
+  },
+  "coordinates": {
+    "transform_rotation_from_to": [
+      [
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "rotation_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "gravity_m_s2": [
+      0.0,
+      9.81,
+      0.0
+    ],
+    "laser_incident_direction": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "pre_rotation_bounds_m": [
+      [
+        0.0,
+        0.0003
+      ],
+      [
+        0.0,
+        0.0012
+      ],
+      [
+        0.0,
+        0.0003
+      ]
+    ],
+    "final_bounds_m": [
+      [
+        0.0,
+        0.0003
+      ],
+      [
+        -0.0003,
+        0.0
+      ],
+      [
+        0.0,
+        0.0012
+      ]
+    ]
+  },
+  "mesh": {
+    "pre_rotation_lengths_m": [
+      0.0003,
+      0.0012,
+      0.0003
+    ],
+    "final_lengths_m": [
+      0.0003,
+      0.0003,
+      0.0012
+    ],
+    "cell_counts_block": [
+      60,
+      240,
+      60
+    ],
+    "total_cells": 864000,
+    "pre_rotation_cell_sizes_m": [
+      4.9999999999999996e-06,
+      4.9999999999999996e-06,
+      4.9999999999999996e-06
+    ],
+    "nominal_min_cell_size_m": 4.9999999999999996e-06,
+    "mesh_patch_types": {
+      "back": "wall",
+      "front": "wall",
+      "leftWall": "wall",
+      "rightWall": "patch",
+      "topWall": "patch",
+      "bottomWall": "patch"
+    }
+  },
+  "powder_bed": {
+    "bed_plate_pre_rotation_m": {
+      "xmin": 0.0,
+      "xmax": 0.0003,
+      "ymin": 0.0,
+      "ymax": 0.0012,
+      "zmin": 0.0,
+      "zmax": 0.0001
+    },
+    "trim_top_m": 0.00017999999999999998,
+    "dump_timestep": 750000,
+    "particles": {
+      "count": 224,
+      "center_bounds_m": [
+        [
+          1.62465e-05,
+          0.000283754
+        ],
+        [
+          1.87479e-05,
+          0.00118125
+        ],
+        [
+          0.000116245,
+          0.000160906
+        ]
+      ],
+      "diameter_m": {
+        "min": 3.25e-05,
+        "d10_number": 3.25e-05,
+        "d50_number": 4.25e-05,
+        "d90_number": 5.25e-05,
+        "d10_volume": 3.75e-05,
+        "d50_volume": 4.75e-05,
+        "d90_volume": 6.25e-05,
+        "max": 6.75e-05
+      },
+      "diameter_counts_um": {
+        "32.5": 42,
+        "37.5": 69,
+        "42.5": 24,
+        "47.5": 41,
+        "52.5": 28,
+        "57.5": 3,
+        "62.5": 13,
+        "67.5": 4
+      },
+      "sphere_volume_m3": 1.0651520804611003e-11,
+      "mass_kg": 9.096398767137797e-08,
+      "top_elevation_m": {
+        "min": 0.000132495,
+        "p10": 0.0001339968,
+        "p50": 0.000147496,
+        "p90": 0.00017022,
+        "max": 0.000179656
+      },
+      "bottom_elevation_m": {
+        "min": 9.9992e-05,
+        "p50": 9.9996e-05,
+        "max": 0.000142156
+      },
+      "nominal_layer_thickness_m": 7.999999999999998e-05,
+      "nominal_bulk_volume_m3": 2.8799999999999987e-11,
+      "solid_volume_in_layer_m3": 1.0651520534613965e-11,
+      "packing_fraction": 0.3698444630074295,
+      "porosity": 0.6301555369925704,
+      "equivalent_solid_thickness_m": 2.9587557040594352e-05,
+      "overlap_pair_count": 334,
+      "max_overlap_m": 1.3466778644472151e-08,
+      "max_overlap_to_min_radius": 0.0005130201388370343,
+      "minimum_lateral_clearance_m": -6.000000000040261e-09,
+      "lateral_clearance_below_minus_0_1um_count": 0,
+      "cells_per_diameter": {
+        "min": 6.5,
+        "d50": 8.500000000000002,
+        "max": 13.500000000000002
+      },
+      "target_layer_thickness_m": 4.9999999999999996e-05,
+      "target_packing_fraction": 0.58,
+      "apparent_packing_at_target_layer": 0.5917511408118871,
+      "implied_layer_thickness_at_target_packing_m": 5.101302938033509e-05,
+      "top_height_above_plate_m": {
+        "min": 3.249499999999999e-05,
+        "p10": 3.399679999999999e-05,
+        "p50": 4.7495999999999994e-05,
+        "p90": 7.022e-05,
+        "max": 7.965599999999998e-05
+      }
+    },
+    "dem": {
+      "units": "cgs",
+      "timestep_s": 5e-08,
+      "requested_particles": 1000,
+      "particle_rate_per_s": 200000.0,
+      "insert_every_steps": 1000,
+      "nominal_particles_per_event": 10.0,
+      "insertion_warning_count": 110,
+      "deleted_particles_from_log": 776,
+      "dangerous_builds": 0,
+      "contact_model": "hertz tangential history",
+      "contact_parameters": {
+        "youngs_modulus_cgs": 50000000.0,
+        "poisson_ratio": 0.3,
+        "coefficient_restitution": 0.1,
+        "coefficient_friction": 0.1,
+        "gravity_cgs_cm_s2": 981.0
+      }
+    }
+  },
+  "laser": {
+    "radius_m": 4.3e-05,
+    "diameter_m": 8.6e-05,
+    "cells_per_radius": 8.600000000000001,
+    "cells_per_diameter": 17.200000000000003,
+    "wavelength_m": 1.064e-06,
+    "electron_number_density_m3": 5.83e+29,
+    "Radius_Flavour": 2.0,
+    "N_sub_divisions": 1.0,
+    "PowderSim": "true",
+    "path_table": [
+      [
+        0.0,
+        [
+          0.0001,
+          2e-05,
+          0.0001
+        ]
+      ],
+      [
+        0.0005,
+        [
+          0.0001,
+          2e-05,
+          0.0006
+        ]
+      ],
+      [
+        0.001,
+        [
+          0.0001,
+          2e-05,
+          0.0011
+        ]
+      ],
+      [
+        0.0011,
+        [
+          0.0001,
+          2e-05,
+          0.0011
+        ]
+      ]
+    ],
+    "power_table": [
+      [
+        0.0,
+        10.0
+      ],
+      [
+        1e-08,
+        350.0
+      ],
+      [
+        0.001,
+        350.0
+      ],
+      [
+        0.001000001,
+        0.0
+      ],
+      [
+        0.0011,
+        0.0
+      ]
+    ],
+    "position_at_start_m": [
+      0.0001,
+      2e-05,
+      0.0001
+    ],
+    "position_at_endTime_m": [
+      0.0001,
+      2e-05,
+      0.00019999999999999998
+    ],
+    "power_at_start_W": 10.0,
+    "power_at_endTime_W": 350.0,
+    "nominal_scan_speed_m_s": 1.0,
+    "simulated_distance_m": 9.999999999999998e-05,
+    "mean_speed_over_simulation_m_s": 0.9999999999999998,
+    "line_energy_J_m": 350.0,
+    "energy_deposited_by_power_schedule_J": 0.03499830000000001,
+    "path_schedule_end_s": 0.0011,
+    "motion_schedule_end_s": 0.001
+  },
+  "materials": {
+    "metal": {
+      "rho_kg_m3": 8540.0,
+      "nu_m2_s": 3.7e-07,
+      "electrical_resistivity_ohm_m": 1e-06,
+      "solidus_K": 1573.0,
+      "liquidus_K": 1639.0,
+      "latent_heat_fusion_J_kg": 290000.0,
+      "thermal_expansion_1_K": 0.00012,
+      "k_polynomial": [
+        6.484,
+        0.012,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cp_polynomial": [
+        376.4,
+        0.2,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dynamic_viscosity_Pa_s": 0.0031598,
+      "evaluated_properties": {
+        "300K": {
+          "temperature_K": 300.0,
+          "k_W_m_K": 10.084,
+          "cp_J_kg_K": 436.4,
+          "thermal_diffusivity_m2_s": 2.7057659324642538e-06
+        },
+        "solidus": {
+          "temperature_K": 1573.0,
+          "k_W_m_K": 25.36,
+          "cp_J_kg_K": 691.0,
+          "thermal_diffusivity_m2_s": 4.297474725222584e-06
+        },
+        "liquidus": {
+          "temperature_K": 1639.0,
+          "k_W_m_K": 26.152,
+          "cp_J_kg_K": 704.2,
+          "thermal_diffusivity_m2_s": 4.3486155665538385e-06
+        }
+      },
+      "melting_range_K": 66.0
+    },
+    "gas": {
+      "rho_kg_m3": 1.0,
+      "nu_m2_s": 1.48e-05,
+      "dynamic_viscosity_Pa_s": 1.48e-05
+    },
+    "interface_and_vaporization": {
+      "surface_tension_N_m": 1.75,
+      "dsigma_dT_N_m_K": -1e-05,
+      "ambient_pressure_Pa": 100000.0,
+      "vaporization_temperature_K": 3186.0,
+      "molar_mass_kg_mol": 0.06,
+      "latent_heat_vaporization_J_kg": 6300000.0
+    }
+  },
+  "numerics": {
+    "endTime_s": 0.0001,
+    "initial_deltaT_s": 1e-08,
+    "maxDeltaT_s": 1e-06,
+    "writeInterval_s": 2.5e-05,
+    "maxCo": 0.2,
+    "maxAlphaCo": 0.2,
+    "nominal_initial_step_count": 10000.0,
+    "minimum_output_interval_count": 4.0,
+    "parallel_subdomains": 48,
+    "decomposition_n": [
+      6.0,
+      1.0,
+      8.0
+    ],
+    "average_cells_per_subdomain": 18000.0,
+    "momentum_model": "laminar",
+    "schemes": {
+      "time": "Euler",
+      "div_phi_U": "Gauss linearUpwind grad(U)",
+      "div_phi_T": "Gauss upwind",
+      "div_alpha": "Gauss interfaceCompression vanLeer 1",
+      "laplacian_default": "Euler"
+    },
+    "pimple": {
+      "nOuterCorrectors": 1.0,
+      "nCorrectors": 3.0,
+      "nNonOrthogonalCorrectors": 0.0
+    },
+    "alpha_controls": {
+      "nAlphaCorr": 2.0,
+      "nAlphaSubCycles": 1.0
+    }
+  },
+  "initial_fields": {
+    "Laser_boundary": {
+      "header_object": "p_rgh",
+      "internal_field": "uniform 0",
+      "boundary_types": {
+        "back": "fixedValue",
+        "front": "fixedValue",
+        "leftWall": "fixedValue",
+        "rightWall": "fixedValue",
+        "topWall": "fixedValue",
+        "bottomWall": "fixedValue",
+        "defaultFaces": "empty"
+      }
+    },
+    "T": {
+      "header_object": "p_rgh",
+      "internal_field": "uniform 300.0",
+      "boundary_types": {
+        "back": "zeroGradient",
+        "front": "zeroGradient",
+        "leftWall": "zeroGradient",
+        "rightWall": "zeroGradient",
+        "topWall": "zeroGradient",
+        "bottomWall": "zeroGradient",
+        "defaultFaces": "zeroGradient"
+      }
+    },
+    "TRHS": {
+      "header_object": "TRHS",
+      "internal_field": "uniform 0",
+      "boundary_types": {
+        "back": "calculated",
+        "front": "calculated",
+        "leftWall": "calculated",
+        "rightWall": "calculated",
+        "topWall": "calculated",
+        "bottomWall": "calculated"
+      }
+    },
+    "U": {
+      "header_object": "U",
+      "internal_field": "uniform (0 0 0)",
+      "boundary_types": {
+        "leftWall": "fixedValue",
+        "rightWall": "fixedValue",
+        "bottomWall": "fixedValue",
+        "topWall": "pressureInletOutletVelocity",
+        "front": "fixedValue",
+        "back": "fixedValue"
+      }
+    },
+    "alpha.metal": {
+      "header_object": "alpha.metal",
+      "internal_field": "uniform 0",
+      "boundary_types": {
+        "back": "zeroGradient",
+        "front": "zeroGradient",
+        "leftWall": "zeroGradient",
+        "rightWall": "zeroGradient",
+        "topWall": "zeroGradient",
+        "bottomWall": "zeroGradient"
+      }
+    },
+    "p_rgh": {
+      "header_object": "p_rgh",
+      "internal_field": "uniform 0",
+      "boundary_types": {
+        "back": "fixedFluxPressure",
+        "front": "fixedFluxPressure",
+        "leftWall": "fixedFluxPressure",
+        "rightWall": "fixedFluxPressure",
+        "topWall": "totalPressure",
+        "bottomWall": "fixedFluxPressure",
+        "defaultFaces": "empty"
+      }
+    }
+  },
+  "findings": [
+    {
+      "severity": "HIGH",
+      "title": "controlDict 的 application 与实际求解器不一致",
+      "detail": "application=Flint_multiphaseEulerFoamD，Allrun 实际执行 laserbeamFoam。这会误导复现者，并可能影响依赖 application 字段的流程。",
+      "action": "把 system/controlDict 中 application 改为 laserbeamFoam。"
+    },
+    {
+      "severity": "HIGH",
+      "title": "默认从 latestTime 启动，容易意外续算旧结果",
+      "detail": "Allrun 仅执行 cp -r initial 0，未先删除旧时间目录；若 0 已存在，复制语义也可能生成 0/initial。",
+      "action": "在全新运行脚本中先清理 0 和数值时间目录，或改为 startFrom startTime；续算另设独立脚本。"
+    },
+    {
+      "severity": "HIGH",
+      "title": "字段头部 object 名称错误：initial/Laser_boundary",
+      "detail": "文件名为 Laser_boundary，FoamFile.object 却为 p_rgh。",
+      "action": "将 object 改为 Laser_boundary，随后运行 foamDictionary/求解器启动检查。"
+    },
+    {
+      "severity": "HIGH",
+      "title": "字段头部 object 名称错误：initial/T",
+      "detail": "文件名为 T，FoamFile.object 却为 p_rgh。",
+      "action": "将 object 改为 T，随后运行 foamDictionary/求解器启动检查。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "字典 object 元数据陈旧：constant/LaserProperties",
+      "detail": "FoamFile.object=PhaseFieldProperties，与文件名 LaserProperties 不一致。",
+      "action": "统一 object 名称，减少版本迁移和自动检查歧义。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "字典 object 元数据陈旧：constant/physicalProperties.metal",
+      "detail": "FoamFile.object=physicalProperties.water，与文件名 physicalProperties.metal 不一致。",
+      "action": "统一 object 名称，减少版本迁移和自动检查歧义。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "字典 object 元数据陈旧：constant/physicalProperties.gas",
+      "detail": "FoamFile.object=physicalProperties.air，与文件名 physicalProperties.gas 不一致。",
+      "action": "统一 object 名称，减少版本迁移和自动检查歧义。"
+    },
+    {
+      "severity": "HIGH",
+      "title": "旋转后激光位置与计算域坐标需核验",
+      "detail": "t=0 激光中心位于旋转后域外：y=20.000 μm，域范围 [-300.000,0.000] μm. 且 V_incident 按通常传播方向解释时指向远离计算域的一侧。",
+      "action": "确认 LaserBeamFoam 对 V_incident 的符号定义；用 transformPoints 后的实际网格坐标重写轨迹，并在 ParaView 中显示激光中心/射线进行验证。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "模拟时间只覆盖激光计划的一部分",
+      "detail": "endTime=100.000 μs，而移动轨迹定义到 1000.000 μs；本次仅覆盖约 10.0%。",
+      "action": "在报告/目录名中明确这是 100 μs 初始段；若目标是整条 1 mm 扫描，将 endTime 延长到至少 1000 μs。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "截断高度与名义层厚的定义需要区分",
+      "detail": "按 100–180 μm 整个截断区计算，固相体积分数为 0.370；但按 check.py 的 50 μm 目标层厚计算，表观堆积率为 0.592。",
+      "action": "报告中同时给出截断区厚度、目标名义层厚、等效致密厚度及顶部高度分布，避免把 180 μm 截断面直接当作均匀粉层顶面。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "最终 PSD 与输入 PSD 有明显选择性偏差",
+      "detail": "输入模板覆盖约 32.5–77.5 μm，但最终颗粒最大直径为 67.5 μm，较大颗粒可能在截断时被优先删除。",
+      "action": "同时保存插入前、沉降后和截断后的 PSD；不要只用输入分布代表最终粉末床。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "DEM 插入阶段出现受限插入警告",
+      "detail": "日志中检测到 110 次 “Less insertions than requested”。这通常表示当前插入区域/重叠约束无法在该事件中达到计划数量。",
+      "action": "结合实际累计插入数检查；必要时扩大 factory 区、降低每事件数量、增加 ntry_mc 或延长插入阶段。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "DEM 使用了显著软化的接触刚度",
+      "detail": "youngsModulus=5e7（cgs 压力单位），等效约 5 MPa；这应被视为数值加速参数，而非 M247 的真实弹性模量。",
+      "action": "记录软化依据，并对 Young 模量和 DEM 时间步进行敏感性检查，确认最终堆积率与 PSD 不依赖该数值选择。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "DEM 时间步安全检查被注释",
+      "detail": "input.liggghts 中存在 check/timestep/gran 示例，但当前未启用。",
+      "action": "在材料/接触参数确定后临时启用 check/timestep/gran，记录 Rayleigh/Hertz 时间步比例，再决定生产 timestep。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "DEM 结果不会自动同步到 CFD 算例",
+      "detail": "DEM_large/Allrun 中复制 location 到 constant 的命令被注释，且示例路径写成 /post/location。",
+      "action": "显式执行 cp post/location ../constant/location，并在复制后运行本审查脚本；建议把该步骤写入可失败即停止的工作流。"
+    },
+    {
+      "severity": "MEDIUM",
+      "title": "DEM 启动脚本含用户机器绝对路径",
+      "detail": "DEM_large/Allrun 将 LIGGGHTS 可执行文件写死为 /home/...。",
+      "action": "改用环境变量、PATH 或脚本参数，例如 ${LIGGGHTS_BIN:-liggghts}。"
+    },
+    {
+      "severity": "LOW",
+      "title": "setFieldsDict 当前未被 Allrun 使用",
+      "detail": "主流程执行 setSolidFraction，而不是 setFields。保留的 setFieldsDict 容易被误认为有效配置。",
+      "action": "删除、归档或在 README 中标注该文件为弃用配置。"
+    },
+    {
+      "severity": "LOW",
+      "title": "初始字段包含网格中不存在的边界条目",
+      "detail": "额外条目：defaultFaces。",
+      "action": "清理 defaultFaces 等遗留条目，使边界字典与 blockMesh 完全一致。"
+    },
+    {
+      "severity": "LOW",
+      "title": "激光子划分数较低",
+      "detail": "N_sub_divisions=1。在自由表面曲率大或粉末多次反射敏感时，角向/面积积分分辨率可能不足。",
+      "action": "先做 N_sub_divisions 的网格独立性/能量吸收敏感性对比，再决定生产值。"
+    }
+  ]
+}

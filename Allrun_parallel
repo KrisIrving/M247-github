@@ -7,7 +7,8 @@ echo "Copying 'initial' to 0"
 cp -r initial 0
 
 runApplication blockMesh
-runApplication setSolidFraction
+runApplication setSolidFraction \
+    -cellSize '(5e-6 5e-6 5e-6)'
 runApplication transformPoints "rotate=((0 1 0) (0 0 1))"
 
 runApplication decomposePar
