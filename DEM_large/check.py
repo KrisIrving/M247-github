@@ -13,7 +13,7 @@ LOCATION_FILE = Path("post/location")
 
 # 几何尺寸，单位 μm
 DOMAIN_X_UM = 300.0
-DOMAIN_Y_UM = 1200.0
+DOMAIN_Y_UM = 1500.0
 
 PLATE_TOP_UM = 100.0
 TRIM_TOP_UM = 180.0

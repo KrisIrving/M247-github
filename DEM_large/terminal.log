@@ -1,5 +1,5 @@
 LIGGGHTS (Version LIGGGHTS-PFM 24.01, compiled 2025-09-01-20:54:06 by kris, git commit d075b97762ce4302707903718dda170920e630bd, based on LAMMPS 23 Nov 2013)
-Created orthogonal box = (0 0 0) to (0.03 0.12 0.05)
+Created orthogonal box = (0 0 0) to (0.03 0.15 0.05)
   1 by 1 by 1 MPI processor grid
 SURFACE/DEFAULT loaded
 HERTZ loaded
@@ -38,10 +38,10 @@ Import and parallelization of mesh box containing 12 triangle(s) successful
 Import and parallelization of mesh plate containing 12 triangle(s) successful
 INFO: Resetting random generator for region factory
 INFO: Particle insertion ins: 10.000000 particles every 1000 steps - particle rate 200000.000000  (mass rate 0.096013)
-      1000 particles (mass 0.000480) within 100000 steps
-Memory usage per processor = 8.99694 Mbytes
+      1250 particles (mass 0.000600) within 125000 steps
+Memory usage per processor = 8.99818 Mbytes
 Step Temp E_pair E_mol TotEng Press Volume 
-       0            0            0            0            0            0 0.00018010804 
+       0            0            0            0            0            0 0.00022513504 
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -54,36 +54,36 @@ insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 1
  - a total of 10 particle templates (mass 0.000005) inserted so far.
-       1            0            0            0            0            0 0.00018010804 
-Loop time of 0.00138976 on 1 procs for 1 steps with 10 atoms
-Max time of 0.00138976 on 1 procs for 1 steps with 10 atoms
+       1            0            0            0            0            0 0.00022513504 
+Loop time of 0.00143749 on 1 procs for 1 steps with 10 atoms
+Max time of 0.00143749 on 1 procs for 1 steps with 10 atoms
 
-Pair  time (%) = 1.152e-06 (0.082892)
-Max Pair time (ib) = 1.152e-06 (0)
-Neigh time (%) = 0.000210304 (15.1324)
-Max Neigh time (ib) = 0.000210304 (0)
-Comm  time (%) = 1.393e-06 (0.100233)
-Max Comm time (ib) = 1.393e-06 (0)
-Outpt time (%) = 4.5159e-05 (3.24941)
-Max Outpt time (ib) = 4.5159e-05 (0)
-Other time (%) = 0.00113175 (81.4351)
-Max Other time (ib) = 0.00113175 (0)
+Pair  time (%) = 1.464e-06 (0.101844)
+Max Pair time (ib) = 1.464e-06 (0)
+Neigh time (%) = 0.000198086 (13.78)
+Max Neigh time (ib) = 0.000198086 (0)
+Comm  time (%) = 1.614e-06 (0.112279)
+Max Comm time (ib) = 1.614e-06 (0)
+Outpt time (%) = 4.5533e-05 (3.16753)
+Max Outpt time (ib) = 4.5533e-05 (0)
+Other time (%) = 0.0011908 (82.8384)
+Max Other time (ib) = 0.0011908 (0)
 
 Nlocal:    10 ave 10 max 10 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 Nghost:    0 ave 0 max 0 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    4 ave 4 max 4 min
+Neighs:    3 ave 3 max 3 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 4
-Ave neighs/atom = 0.4
+Total # of neighbors = 3
+Ave neighs/atom = 0.3
 Neighbor list builds = 1
 Dangerous builds = 0
 Setting up run ...
-Memory usage per processor = 12.5104 Mbytes
+Memory usage per processor = 12.5116 Mbytes
 Step Temp E_pair E_mol TotEng Press Volume 
-       1   0.80670992            0            0 1.5036089e-15 5.5655814e-12 0.00018010804 
+       1   0.80670992            0            0 1.5036089e-15 4.4524653e-12 0.00022513504 
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -529,13 +529,29 @@ insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 37001
  - a total of 380 particle templates (mass 0.000167) inserted so far.
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 38001
- - a total of 380 particle templates (mass 0.000167) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 38001
+ - a total of 390 particle templates (mass 0.000171) inserted so far.
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 39001
- - a total of 380 particle templates (mass 0.000167) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 39001
+ - a total of 400 particle templates (mass 0.000176) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -547,7 +563,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 40001
- - a total of 390 particle templates (mass 0.000170) inserted so far.
+ - a total of 410 particle templates (mass 0.000180) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -559,7 +575,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 41001
- - a total of 400 particle templates (mass 0.000174) inserted so far.
+ - a total of 420 particle templates (mass 0.000184) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -568,9 +584,10 @@ insertion: proc 0 at 40 %
 insertion: proc 0 at 50 %
 insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
-INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000005) at step 42001
- - a total of 407 particle templates (mass 0.000179) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000006) at step 42001
+ - a total of 430 particle templates (mass 0.000189) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -582,7 +599,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 43001
- - a total of 417 particle templates (mass 0.000183) inserted so far.
+ - a total of 440 particle templates (mass 0.000193) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -594,7 +611,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 44001
- - a total of 427 particle templates (mass 0.000188) inserted so far.
+ - a total of 450 particle templates (mass 0.000198) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -606,7 +623,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 45001
- - a total of 437 particle templates (mass 0.000191) inserted so far.
+ - a total of 460 particle templates (mass 0.000201) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -618,7 +635,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 46001
- - a total of 447 particle templates (mass 0.000196) inserted so far.
+ - a total of 470 particle templates (mass 0.000206) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -630,7 +647,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 47001
- - a total of 457 particle templates (mass 0.000200) inserted so far.
+ - a total of 480 particle templates (mass 0.000210) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -642,12 +659,19 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 48001
- - a total of 467 particle templates (mass 0.000204) inserted so far.
+ - a total of 490 particle templates (mass 0.000214) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 49001
- - a total of 468 particle templates (mass 0.000205) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 49001
+ - a total of 500 particle templates (mass 0.000219) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -659,30 +683,15 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 50001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
+ - a total of 510 particle templates (mass 0.000223) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 51001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
+ - a total of 510 particle templates (mass 0.000223) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 52001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 53001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 54001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 55001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 56001
- - a total of 478 particle templates (mass 0.000209) inserted so far.
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 52001
+ - a total of 511 particle templates (mass 0.000224) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -692,13 +701,49 @@ insertion: proc 0 at 40 %
 insertion: proc 0 at 50 %
 insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
-INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000003) at step 57001
- - a total of 485 particle templates (mass 0.000212) inserted so far.
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 53001
+ - a total of 521 particle templates (mass 0.000228) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000001) at step 54001
+ - a total of 523 particle templates (mass 0.000230) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 58001
- - a total of 485 particle templates (mass 0.000212) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 55001
+ - a total of 523 particle templates (mass 0.000230) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 56001
+ - a total of 524 particle templates (mass 0.000231) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 57001
+ - a total of 534 particle templates (mass 0.000234) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 58001
+ - a total of 544 particle templates (mass 0.000240) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -710,7 +755,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 59001
- - a total of 495 particle templates (mass 0.000216) inserted so far.
+ - a total of 554 particle templates (mass 0.000243) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -722,14 +767,14 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 60001
- - a total of 505 particle templates (mass 0.000219) inserted so far.
+ - a total of 564 particle templates (mass 0.000247) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 61001
- - a total of 505 particle templates (mass 0.000219) inserted so far.
+ - a total of 564 particle templates (mass 0.000247) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 62001
- - a total of 505 particle templates (mass 0.000219) inserted so far.
+ - a total of 564 particle templates (mass 0.000247) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -742,28 +787,34 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 63001
- - a total of 515 particle templates (mass 0.000222) inserted so far.
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 64001
- - a total of 515 particle templates (mass 0.000222) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 65001
- - a total of 515 particle templates (mass 0.000222) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 66001
- - a total of 515 particle templates (mass 0.000222) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 67001
- - a total of 515 particle templates (mass 0.000222) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+ - a total of 574 particle templates (mass 0.000250) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 68001
- - a total of 517 particle templates (mass 0.000224) inserted so far.
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 64001
+ - a total of 584 particle templates (mass 0.000254) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 65001
+ - a total of 584 particle templates (mass 0.000254) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 66001
+ - a total of 584 particle templates (mass 0.000254) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 67001
+ - a total of 584 particle templates (mass 0.000254) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 68001
+ - a total of 584 particle templates (mass 0.000254) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -776,7 +827,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 69001
- - a total of 527 particle templates (mass 0.000227) inserted so far.
+ - a total of 594 particle templates (mass 0.000257) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -785,20 +836,29 @@ insertion: proc 0 at 40 %
 insertion: proc 0 at 50 %
 insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
-INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000003) at step 70001
- - a total of 534 particle templates (mass 0.000231) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 70001
+ - a total of 604 particle templates (mass 0.000261) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 71001
- - a total of 534 particle templates (mass 0.000231) inserted so far.
+ - a total of 604 particle templates (mass 0.000261) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 72001
- - a total of 534 particle templates (mass 0.000231) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 72001
+ - a total of 614 particle templates (mass 0.000265) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 73001
- - a total of 534 particle templates (mass 0.000231) inserted so far.
+ - a total of 614 particle templates (mass 0.000265) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -811,28 +871,28 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 74001
- - a total of 544 particle templates (mass 0.000234) inserted so far.
+ - a total of 624 particle templates (mass 0.000268) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 75001
- - a total of 544 particle templates (mass 0.000234) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 76001
- - a total of 544 particle templates (mass 0.000234) inserted so far.
+ - a total of 624 particle templates (mass 0.000268) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
 insertion: proc 0 at 30 %
-insertion: proc 0 at 40 %
-insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-INFO: Particle insertion ins: inserted 6 particle templates (mass 0.000003) at step 77001
- - a total of 550 particle templates (mass 0.000237) inserted so far.
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000002) at step 76001
+ - a total of 627 particle templates (mass 0.000270) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000002) at step 77001
+ - a total of 630 particle templates (mass 0.000272) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 78001
- - a total of 550 particle templates (mass 0.000237) inserted so far.
+ - a total of 630 particle templates (mass 0.000272) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -845,45 +905,76 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 79001
- - a total of 560 particle templates (mass 0.000241) inserted so far.
+ - a total of 640 particle templates (mass 0.000276) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 80001
- - a total of 560 particle templates (mass 0.000241) inserted so far.
+ - a total of 640 particle templates (mass 0.000276) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 81001
- - a total of 560 particle templates (mass 0.000241) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 81001
+ - a total of 650 particle templates (mass 0.000280) inserted so far.
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 82001
- - a total of 560 particle templates (mass 0.000241) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 82001
+ - a total of 660 particle templates (mass 0.000284) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 83001
- - a total of 560 particle templates (mass 0.000241) inserted so far.
+ - a total of 660 particle templates (mass 0.000284) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 84001
+ - a total of 660 particle templates (mass 0.000284) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 85001
+ - a total of 660 particle templates (mass 0.000284) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 84001
- - a total of 561 particle templates (mass 0.000242) inserted so far.
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 86001
+ - a total of 670 particle templates (mass 0.000288) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 87001
+ - a total of 671 particle templates (mass 0.000289) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 85001
- - a total of 562 particle templates (mass 0.000243) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 86001
- - a total of 562 particle templates (mass 0.000243) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 87001
- - a total of 562 particle templates (mass 0.000243) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 88001
- - a total of 562 particle templates (mass 0.000243) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 88001
+ - a total of 681 particle templates (mass 0.000293) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -895,23 +986,27 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 89001
- - a total of 572 particle templates (mass 0.000247) inserted so far.
+ - a total of 691 particle templates (mass 0.000297) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 90001
+ - a total of 691 particle templates (mass 0.000297) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 91001
+ - a total of 691 particle templates (mass 0.000297) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
 insertion: proc 0 at 30 %
 insertion: proc 0 at 40 %
-INFO: Particle insertion ins: inserted 4 particle templates (mass 0.000003) at step 90001
- - a total of 576 particle templates (mass 0.000250) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 91001
- - a total of 576 particle templates (mass 0.000250) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 92001
- - a total of 576 particle templates (mass 0.000250) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 92001
+ - a total of 701 particle templates (mass 0.000302) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -923,19 +1018,13 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 93001
- - a total of 586 particle templates (mass 0.000254) inserted so far.
+ - a total of 711 particle templates (mass 0.000306) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-insertion: proc 0 at 30 %
-insertion: proc 0 at 40 %
-insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 94001
- - a total of 596 particle templates (mass 0.000258) inserted so far.
+INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000001) at step 94001
+ - a total of 713 particle templates (mass 0.000307) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -947,43 +1036,52 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 95001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
+ - a total of 723 particle templates (mass 0.000311) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 96001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
+ - a total of 723 particle templates (mass 0.000311) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 97001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
+ - a total of 723 particle templates (mass 0.000311) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 98001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 98001
+ - a total of 733 particle templates (mass 0.000315) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 99001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
+ - a total of 733 particle templates (mass 0.000315) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 100001
- - a total of 606 particle templates (mass 0.000262) inserted so far.
+ - a total of 733 particle templates (mass 0.000315) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 101001
- - a total of 607 particle templates (mass 0.000263) inserted so far.
+ - a total of 734 particle templates (mass 0.000316) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 102001
- - a total of 607 particle templates (mass 0.000263) inserted so far.
+ - a total of 734 particle templates (mass 0.000316) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 103001
- - a total of 607 particle templates (mass 0.000263) inserted so far.
+ - a total of 734 particle templates (mass 0.000316) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 104001
- - a total of 607 particle templates (mass 0.000263) inserted so far.
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 104001
+ - a total of 735 particle templates (mass 0.000317) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -996,10 +1094,10 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 105001
- - a total of 617 particle templates (mass 0.000266) inserted so far.
+ - a total of 745 particle templates (mass 0.000321) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 106001
- - a total of 617 particle templates (mass 0.000266) inserted so far.
+ - a total of 745 particle templates (mass 0.000321) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1012,7 +1110,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 107001
- - a total of 627 particle templates (mass 0.000270) inserted so far.
+ - a total of 755 particle templates (mass 0.000325) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1024,30 +1122,28 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 108001
- - a total of 637 particle templates (mass 0.000273) inserted so far.
+ - a total of 765 particle templates (mass 0.000328) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 109001
- - a total of 638 particle templates (mass 0.000274) inserted so far.
+ - a total of 766 particle templates (mass 0.000329) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 110001
- - a total of 638 particle templates (mass 0.000274) inserted so far.
+ - a total of 766 particle templates (mass 0.000329) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 111001
- - a total of 638 particle templates (mass 0.000274) inserted so far.
+ - a total of 766 particle templates (mass 0.000329) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 112001
+ - a total of 766 particle templates (mass 0.000329) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-insertion: proc 0 at 20 %
-insertion: proc 0 at 30 %
-INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000003) at step 112001
- - a total of 641 particle templates (mass 0.000277) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 113001
- - a total of 641 particle templates (mass 0.000277) inserted so far.
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 113001
+ - a total of 767 particle templates (mass 0.000330) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1055,19 +1151,16 @@ insertion: proc 0 at 20 %
 insertion: proc 0 at 30 %
 insertion: proc 0 at 40 %
 insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 114001
- - a total of 651 particle templates (mass 0.000281) inserted so far.
+INFO: Particle insertion ins: inserted 5 particle templates (mass 0.000003) at step 114001
+ - a total of 772 particle templates (mass 0.000333) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 115001
- - a total of 651 particle templates (mass 0.000281) inserted so far.
+ - a total of 772 particle templates (mass 0.000333) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 116001
- - a total of 651 particle templates (mass 0.000281) inserted so far.
+ - a total of 772 particle templates (mass 0.000333) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1080,14 +1173,15 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 117001
- - a total of 661 particle templates (mass 0.000285) inserted so far.
+ - a total of 782 particle templates (mass 0.000337) inserted so far.
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 118001
- - a total of 661 particle templates (mass 0.000285) inserted so far.
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 118001
+ - a total of 783 particle templates (mass 0.000338) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 119001
- - a total of 661 particle templates (mass 0.000285) inserted so far.
+ - a total of 783 particle templates (mass 0.000338) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1100,7 +1194,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 120001
- - a total of 671 particle templates (mass 0.000288) inserted so far.
+ - a total of 793 particle templates (mass 0.000341) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1112,15 +1206,11 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 121001
- - a total of 681 particle templates (mass 0.000291) inserted so far.
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 122001
- - a total of 681 particle templates (mass 0.000291) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+ - a total of 803 particle templates (mass 0.000345) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 123001
- - a total of 682 particle templates (mass 0.000292) inserted so far.
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 122001
+ - a total of 804 particle templates (mass 0.000346) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1132,15 +1222,28 @@ insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 124001
- - a total of 692 particle templates (mass 0.000296) inserted so far.
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 123001
+ - a total of 814 particle templates (mass 0.000351) inserted so far.
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 125001
- - a total of 692 particle templates (mass 0.000296) inserted so far.
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 124001
+ - a total of 824 particle templates (mass 0.000354) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 125001
+ - a total of 825 particle templates (mass 0.000356) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 126001
- - a total of 692 particle templates (mass 0.000296) inserted so far.
+ - a total of 825 particle templates (mass 0.000356) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1151,12 +1254,12 @@ insertion: proc 0 at 50 %
 insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
-INFO: Particle insertion ins: inserted 8 particle templates (mass 0.000003) at step 127001
- - a total of 700 particle templates (mass 0.000299) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 127001
+ - a total of 835 particle templates (mass 0.000359) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 128001
- - a total of 700 particle templates (mass 0.000299) inserted so far.
+ - a total of 835 particle templates (mass 0.000359) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1169,7 +1272,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 129001
- - a total of 710 particle templates (mass 0.000303) inserted so far.
+ - a total of 845 particle templates (mass 0.000363) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1181,7 +1284,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 130001
- - a total of 720 particle templates (mass 0.000307) inserted so far.
+ - a total of 855 particle templates (mass 0.000367) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1193,34 +1296,48 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 131001
- - a total of 730 particle templates (mass 0.000310) inserted so far.
+ - a total of 865 particle templates (mass 0.000370) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 132001
- - a total of 730 particle templates (mass 0.000310) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 133001
- - a total of 730 particle templates (mass 0.000310) inserted so far.
+ - a total of 865 particle templates (mass 0.000370) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 134001
- - a total of 732 particle templates (mass 0.000312) inserted so far.
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000005) at step 133001
+ - a total of 872 particle templates (mass 0.000375) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 134001
+ - a total of 882 particle templates (mass 0.000380) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 135001
- - a total of 732 particle templates (mass 0.000312) inserted so far.
+ - a total of 882 particle templates (mass 0.000380) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 136001
+ - a total of 883 particle templates (mass 0.000381) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 136001
- - a total of 734 particle templates (mass 0.000314) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 137001
- - a total of 734 particle templates (mass 0.000314) inserted so far.
+INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 137001
+ - a total of 885 particle templates (mass 0.000383) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1233,14 +1350,15 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 138001
- - a total of 744 particle templates (mass 0.000318) inserted so far.
+ - a total of 895 particle templates (mass 0.000387) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 139001
- - a total of 744 particle templates (mass 0.000318) inserted so far.
+ - a total of 895 particle templates (mass 0.000387) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 140001
- - a total of 744 particle templates (mass 0.000318) inserted so far.
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 140001
+ - a total of 896 particle templates (mass 0.000388) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1253,46 +1371,10 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 141001
- - a total of 754 particle templates (mass 0.000322) inserted so far.
+ - a total of 906 particle templates (mass 0.000392) inserted so far.
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-insertion: proc 0 at 20 %
-insertion: proc 0 at 30 %
-insertion: proc 0 at 40 %
-insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 142001
- - a total of 764 particle templates (mass 0.000326) inserted so far.
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-insertion: proc 0 at 20 %
-insertion: proc 0 at 30 %
-insertion: proc 0 at 40 %
-insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 143001
- - a total of 774 particle templates (mass 0.000329) inserted so far.
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-insertion: proc 0 at 20 %
-insertion: proc 0 at 30 %
-insertion: proc 0 at 40 %
-insertion: proc 0 at 50 %
-insertion: proc 0 at 60 %
-insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 144001
- - a total of 784 particle templates (mass 0.000333) inserted so far.
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 145001
- - a total of 784 particle templates (mass 0.000333) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 142001
+ - a total of 906 particle templates (mass 0.000392) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1304,8 +1386,36 @@ insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 143001
+ - a total of 916 particle templates (mass 0.000395) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 144001
+ - a total of 916 particle templates (mass 0.000395) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 145001
+ - a total of 926 particle templates (mass 0.000399) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 146001
- - a total of 794 particle templates (mass 0.000338) inserted so far.
+ - a total of 936 particle templates (mass 0.000403) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1317,10 +1427,10 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 147001
- - a total of 804 particle templates (mass 0.000342) inserted so far.
+ - a total of 946 particle templates (mass 0.000407) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 148001
- - a total of 804 particle templates (mass 0.000342) inserted so far.
+ - a total of 946 particle templates (mass 0.000407) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1333,24 +1443,33 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 149001
- - a total of 814 particle templates (mass 0.000345) inserted so far.
+ - a total of 956 particle templates (mass 0.000410) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 150001
- - a total of 814 particle templates (mass 0.000345) inserted so far.
+ - a total of 956 particle templates (mass 0.000410) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 151001
- - a total of 816 particle templates (mass 0.000347) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 151001
+ - a total of 966 particle templates (mass 0.000416) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 152001
- - a total of 816 particle templates (mass 0.000347) inserted so far.
+ - a total of 966 particle templates (mass 0.000416) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 153001
- - a total of 816 particle templates (mass 0.000347) inserted so far.
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000003) at step 153001
+ - a total of 969 particle templates (mass 0.000419) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1363,7 +1482,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 154001
- - a total of 826 particle templates (mass 0.000350) inserted so far.
+ - a total of 979 particle templates (mass 0.000422) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1375,11 +1494,18 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 155001
- - a total of 836 particle templates (mass 0.000353) inserted so far.
+ - a total of 989 particle templates (mass 0.000425) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 156001
- - a total of 837 particle templates (mass 0.000354) inserted so far.
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+INFO: Particle insertion ins: inserted 8 particle templates (mass 0.000004) at step 156001
+ - a total of 997 particle templates (mass 0.000429) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1392,24 +1518,34 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 157001
- - a total of 847 particle templates (mass 0.000358) inserted so far.
+ - a total of 1007 particle templates (mass 0.000434) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 158001
- - a total of 847 particle templates (mass 0.000358) inserted so far.
+ - a total of 1007 particle templates (mass 0.000434) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 159001
- - a total of 847 particle templates (mass 0.000358) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 160001
- - a total of 847 particle templates (mass 0.000358) inserted so far.
+ - a total of 1007 particle templates (mass 0.000434) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 161001
- - a total of 848 particle templates (mass 0.000359) inserted so far.
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000003) at step 160001
+ - a total of 1010 particle templates (mass 0.000436) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 161001
+ - a total of 1020 particle templates (mass 0.000441) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1421,14 +1557,19 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 162001
- - a total of 858 particle templates (mass 0.000362) inserted so far.
+ - a total of 1030 particle templates (mass 0.000444) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 163001
- - a total of 858 particle templates (mass 0.000362) inserted so far.
+ - a total of 1030 particle templates (mass 0.000444) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 164001
- - a total of 858 particle templates (mass 0.000362) inserted so far.
+ - a total of 1030 particle templates (mass 0.000444) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 165001
+ - a total of 1031 particle templates (mass 0.000445) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1440,15 +1581,11 @@ insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 165001
- - a total of 868 particle templates (mass 0.000367) inserted so far.
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 166001
- - a total of 868 particle templates (mass 0.000367) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 166001
+ - a total of 1041 particle templates (mass 0.000449) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 167001
- - a total of 868 particle templates (mass 0.000367) inserted so far.
+ - a total of 1041 particle templates (mass 0.000449) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1461,32 +1598,10 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 168001
- - a total of 878 particle templates (mass 0.000371) inserted so far.
+ - a total of 1051 particle templates (mass 0.000453) inserted so far.
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 169001
- - a total of 879 particle templates (mass 0.000372) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 170001
- - a total of 879 particle templates (mass 0.000372) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 171001
- - a total of 879 particle templates (mass 0.000372) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 172001
- - a total of 879 particle templates (mass 0.000372) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 173001
- - a total of 879 particle templates (mass 0.000372) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 174001
- - a total of 880 particle templates (mass 0.000373) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 169001
+ - a total of 1051 particle templates (mass 0.000453) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1498,8 +1613,56 @@ insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 175001
- - a total of 890 particle templates (mass 0.000378) inserted so far.
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 170001
+ - a total of 1061 particle templates (mass 0.000458) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+INFO: Particle insertion ins: inserted 5 particle templates (mass 0.000003) at step 171001
+ - a total of 1066 particle templates (mass 0.000461) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 172001
+ - a total of 1076 particle templates (mass 0.000465) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000005) at step 173001
+ - a total of 1086 particle templates (mass 0.000470) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 174001
+ - a total of 1087 particle templates (mass 0.000471) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+INFO: Particle insertion ins: inserted 6 particle templates (mass 0.000003) at step 175001
+ - a total of 1093 particle templates (mass 0.000475) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1511,10 +1674,10 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 176001
- - a total of 900 particle templates (mass 0.000381) inserted so far.
+ - a total of 1103 particle templates (mass 0.000478) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 177001
- - a total of 900 particle templates (mass 0.000381) inserted so far.
+ - a total of 1103 particle templates (mass 0.000478) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1527,7 +1690,20 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 178001
- - a total of 910 particle templates (mass 0.000385) inserted so far.
+ - a total of 1113 particle templates (mass 0.000482) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 179001
+ - a total of 1113 particle templates (mass 0.000482) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 180001
+ - a total of 1114 particle templates (mass 0.000483) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 181001
+ - a total of 1114 particle templates (mass 0.000483) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1538,39 +1714,26 @@ insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 179001
- - a total of 920 particle templates (mass 0.000389) inserted so far.
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 182001
+ - a total of 1124 particle templates (mass 0.000487) inserted so far.
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 180001
- - a total of 921 particle templates (mass 0.000390) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 181001
- - a total of 922 particle templates (mass 0.000392) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 182001
- - a total of 923 particle templates (mass 0.000392) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
-insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 183001
- - a total of 924 particle templates (mass 0.000394) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 183001
+ - a total of 1124 particle templates (mass 0.000487) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 184001
- - a total of 924 particle templates (mass 0.000394) inserted so far.
+ - a total of 1124 particle templates (mass 0.000487) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 185001
- - a total of 924 particle templates (mass 0.000394) inserted so far.
+ - a total of 1124 particle templates (mass 0.000487) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 186001
- - a total of 924 particle templates (mass 0.000394) inserted so far.
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000003) at step 186001
+ - a total of 1127 particle templates (mass 0.000490) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1583,20 +1746,18 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 187001
- - a total of 934 particle templates (mass 0.000397) inserted so far.
+ - a total of 1137 particle templates (mass 0.000493) inserted so far.
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 188001
- - a total of 935 particle templates (mass 0.000398) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 188001
+ - a total of 1137 particle templates (mass 0.000493) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 189001
- - a total of 936 particle templates (mass 0.000400) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 189001
+ - a total of 1137 particle templates (mass 0.000493) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 190001
- - a total of 936 particle templates (mass 0.000400) inserted so far.
+ - a total of 1137 particle templates (mass 0.000493) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1609,7 +1770,7 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 191001
- - a total of 946 particle templates (mass 0.000403) inserted so far.
+ - a total of 1147 particle templates (mass 0.000497) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
@@ -1618,15 +1779,12 @@ insertion: proc 0 at 40 %
 insertion: proc 0 at 50 %
 insertion: proc 0 at 60 %
 insertion: proc 0 at 70 %
-insertion: proc 0 at 80 %
-insertion: proc 0 at 90 %
-INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 192001
- - a total of 956 particle templates (mass 0.000406) inserted so far.
+INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000003) at step 192001
+ - a total of 1154 particle templates (mass 0.000499) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
-insertion: proc 0 at 10 %
-insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 193001
- - a total of 958 particle templates (mass 0.000409) inserted so far.
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 193001
+ - a total of 1154 particle templates (mass 0.000499) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1639,21 +1797,26 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 194001
- - a total of 968 particle templates (mass 0.000412) inserted so far.
+ - a total of 1164 particle templates (mass 0.000503) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
 insertion: proc 0 at 30 %
-INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000002) at step 195001
- - a total of 971 particle templates (mass 0.000415) inserted so far.
-WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 195001
+ - a total of 1174 particle templates (mass 0.000507) inserted so far.
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 196001
- - a total of 971 particle templates (mass 0.000415) inserted so far.
+ - a total of 1174 particle templates (mass 0.000507) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 197001
- - a total of 971 particle templates (mass 0.000415) inserted so far.
+ - a total of 1174 particle templates (mass 0.000507) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1666,16 +1829,22 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 198001
- - a total of 981 particle templates (mass 0.000419) inserted so far.
+ - a total of 1184 particle templates (mass 0.000511) inserted so far.
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
 insertion: proc 0 at 20 %
-INFO: Particle insertion ins: inserted 2 particle templates (mass 0.000002) at step 199001
- - a total of 983 particle templates (mass 0.000421) inserted so far.
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+INFO: Particle insertion ins: inserted 8 particle templates (mass 0.000004) at step 199001
+ - a total of 1192 particle templates (mass 0.000515) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 200001
- - a total of 983 particle templates (mass 0.000421) inserted so far.
+ - a total of 1192 particle templates (mass 0.000515) inserted so far.
 WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
 insertion: proc 0 at 0 %
 insertion: proc 0 at 10 %
@@ -1688,41 +1857,117 @@ insertion: proc 0 at 70 %
 insertion: proc 0 at 80 %
 insertion: proc 0 at 90 %
 INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 201001
- - a total of 993 particle templates (mass 0.000424) inserted so far.
-INFO: Particle insertion ins: inserted 7 particle templates (mass 0.000002) at step 202001
- - a total of 1000 particle templates (mass 0.000426) inserted so far.
-  500000 5.5297159e+08            0            0 1.0306716e-06    21.572127 0.00018010804 
-Loop time of 222.065 on 1 procs for 499999 steps with 1000 atoms
-Max time of 222.065 on 1 procs for 499999 steps with 1000 atoms
+ - a total of 1202 particle templates (mass 0.000518) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 202001
+ - a total of 1212 particle templates (mass 0.000521) inserted so far.
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000003) at step 203001
+ - a total of 1222 particle templates (mass 0.000524) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 204001
+ - a total of 1222 particle templates (mass 0.000524) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 205001
+ - a total of 1222 particle templates (mass 0.000524) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+INFO: Particle insertion ins: inserted 1 particle templates (mass 0.000001) at step 206001
+ - a total of 1223 particle templates (mass 0.000525) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+INFO: Particle insertion ins: inserted 3 particle templates (mass 0.000003) at step 207001
+ - a total of 1226 particle templates (mass 0.000528) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 208001
+ - a total of 1236 particle templates (mass 0.000532) inserted so far.
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 209001
+ - a total of 1236 particle templates (mass 0.000532) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+INFO: Particle insertion ins: inserted 0 particle templates (mass 0.000000) at step 210001
+ - a total of 1236 particle templates (mass 0.000532) inserted so far.
+WARNING: Particle insertion: Less insertions than requested (/home/kris/CFDEM/LIGGGHTS/src/fix_insert.cpp:814)
+insertion: proc 0 at 0 %
+insertion: proc 0 at 10 %
+insertion: proc 0 at 20 %
+insertion: proc 0 at 30 %
+insertion: proc 0 at 40 %
+insertion: proc 0 at 50 %
+insertion: proc 0 at 60 %
+insertion: proc 0 at 70 %
+insertion: proc 0 at 80 %
+insertion: proc 0 at 90 %
+INFO: Particle insertion ins: inserted 10 particle templates (mass 0.000004) at step 211001
+ - a total of 1246 particle templates (mass 0.000535) inserted so far.
+INFO: Particle insertion ins: inserted 4 particle templates (mass 0.000001) at step 212001
+ - a total of 1250 particle templates (mass 0.000537) inserted so far.
+  500000 2.8892536e+08            0            0 5.3852163e-07    21.644458 0.00022513504 
+Loop time of 269.149 on 1 procs for 499999 steps with 1250 atoms
+Max time of 269.149 on 1 procs for 499999 steps with 1250 atoms
 
-Pair  time (%) = 174.949 (78.7828)
-Max Pair time (ib) = 174.949 (0)
-Neigh time (%) = 0.159265 (0.07172)
-Max Neigh time (ib) = 0.159265 (0)
-Comm  time (%) = 0.02791 (0.0125684)
-Max Comm time (ib) = 0.02791 (0)
-Outpt time (%) = 4.5304e-05 (2.04012e-05)
-Max Outpt time (ib) = 4.5304e-05 (0)
-Other time (%) = 46.9288 (21.1329)
-Max Other time (ib) = 46.9288 (0)
+Pair  time (%) = 209.956 (78.0075)
+Max Pair time (ib) = 209.956 (0)
+Neigh time (%) = 0.209467 (0.0778256)
+Max Neigh time (ib) = 0.209467 (0)
+Comm  time (%) = 0.0414694 (0.0154076)
+Max Comm time (ib) = 0.0414694 (0)
+Outpt time (%) = 5.1021e-05 (1.89564e-05)
+Max Outpt time (ib) = 5.1021e-05 (0)
+Other time (%) = 58.9417 (21.8993)
+Max Other time (ib) = 58.9417 (0)
 
-Nlocal:    1000 ave 1000 max 1000 min
+Nlocal:    1250 ave 1250 max 1250 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 Nghost:    0 ave 0 max 0 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    32468 ave 32468 max 32468 min
+Neighs:    39966 ave 39966 max 39966 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 32468
-Ave neighs/atom = 32.468
-Neighbor list builds = 210
+Total # of neighbors = 39966
+Ave neighs/atom = 31.9728
+Neighbor list builds = 221
 Dangerous builds = 0
 Setting up run ...
-Memory usage per processor = 12.5184 Mbytes
+Memory usage per processor = 12.5215 Mbytes
 Step Atoms 2 
-  500000     1000        2.189 
-Loop time of 4e-07 on 1 procs for 0 steps with 1000 atoms
-Max time of 4e-07 on 1 procs for 0 steps with 1000 atoms
+  500000     1250        2.743 
+Loop time of 3.68e-07 on 1 procs for 0 steps with 1250 atoms
+Max time of 3.68e-07 on 1 procs for 0 steps with 1250 atoms
 
 Pair  time (%) = 0 (0)
 Max Pair time (ib) = 0 (0)
@@ -1732,49 +1977,49 @@ Comm  time (%) = 0 (0)
 Max Comm time (ib) = 0 (0)
 Outpt time (%) = 0 (0)
 Max Outpt time (ib) = 0 (0)
-Other time (%) = 4e-07 (100)
-Max Other time (ib) = 4e-07 (0)
+Other time (%) = 3.68e-07 (100)
+Max Other time (ib) = 3.68e-07 (0)
 
-Nlocal:    1000 ave 1000 max 1000 min
+Nlocal:    1250 ave 1250 max 1250 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 Nghost:    0 ave 0 max 0 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    32563 ave 32563 max 32563 min
+Neighs:    39973 ave 39973 max 39973 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 32563
-Ave neighs/atom = 32.563
+Total # of neighbors = 39973
+Ave neighs/atom = 31.9784
 Neighbor list builds = 0
 Dangerous builds = 0
-776 atoms in group layer
-Deleted 776 atoms, new total = 224
+944 atoms in group layer
+Deleted 944 atoms, new total = 306
 Setting up run ...
-Memory usage per processor = 12.5887 Mbytes
+Memory usage per processor = 12.5906 Mbytes
 Step Atoms 2 
-  500000      224      0.48225 
-  750000      224      0.48225 
-Loop time of 25.8652 on 1 procs for 250000 steps with 224 atoms
-Max time of 25.8652 on 1 procs for 250000 steps with 224 atoms
+  500000      306        0.642 
+  750000      306        0.642 
+Loop time of 35.9455 on 1 procs for 250000 steps with 306 atoms
+Max time of 35.9455 on 1 procs for 250000 steps with 306 atoms
 
-Pair  time (%) = 12.6223 (48.8004)
-Max Pair time (ib) = 12.6223 (0)
-Neigh time (%) = 0 (0)
-Max Neigh time (ib) = 0 (0)
-Comm  time (%) = 0.00909391 (0.0351589)
-Max Comm time (ib) = 0.00909391 (0)
-Outpt time (%) = 0.000493583 (0.00190829)
-Max Outpt time (ib) = 0.000493583 (0)
-Other time (%) = 13.2333 (51.1626)
-Max Other time (ib) = 13.2333 (0)
+Pair  time (%) = 17.919 (49.8504)
+Max Pair time (ib) = 17.919 (0)
+Neigh time (%) = 0.000217373 (0.000604729)
+Max Neigh time (ib) = 0.000217373 (0)
+Comm  time (%) = 0.00969452 (0.02697)
+Max Comm time (ib) = 0.00969452 (0)
+Outpt time (%) = 0.000604023 (0.00168038)
+Max Outpt time (ib) = 0.000604023 (0)
+Other time (%) = 18.016 (50.1204)
+Max Other time (ib) = 18.016 (0)
 
-Nlocal:    224 ave 224 max 224 min
+Nlocal:    306 ave 306 max 306 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 Nghost:    0 ave 0 max 0 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    2541 ave 2541 max 2541 min
+Neighs:    3708 ave 3708 max 3708 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 2541
-Ave neighs/atom = 11.3438
-Neighbor list builds = 0
+Total # of neighbors = 3708
+Ave neighs/atom = 12.1176
+Neighbor list builds = 1
 Dangerous builds = 0

@@ -21,7 +21,7 @@ xmin 0.0;
 xmax 0.0003;
 
 ymin 0.0;
-ymax 0.0012;
+ymax 0.0015;
 
 zmin -0.0005;
 zmax 0.0001;

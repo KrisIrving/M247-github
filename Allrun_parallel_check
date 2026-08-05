@@ -1,0 +1,308 @@
+#!/usr/bin/env bash
+
+# Do not use "set -e" here:
+# command status is captured explicitly so that the corresponding
+# log can be examined before the script exits.
+set -u
+set -o pipefail
+
+# Always run from the directory containing this script
+cd "$(dirname "$0")" || exit 1
+
+# OpenFOAM environment must already be sourced
+if [[ -z "${WM_PROJECT_DIR:-}" ]]; then
+    echo "ERROR: OpenFOAM environment is not loaded." >&2
+    echo "Please source the OpenFOAM bashrc first." >&2
+    exit 1
+fi
+
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+
+SOLVER="laserbeamFoam"
+
+# Read numberOfSubdomains directly from decomposeParDict
+NPROCS="$(
+    foamDictionary \
+        -entry numberOfSubdomains \
+        -value system/decomposeParDict
+)" || {
+    echo "ERROR: Cannot read numberOfSubdomains." >&2
+    exit 1
+}
+
+
+# OpenFOAM and system-level fatal patterns
+FATAL_REGEX='FOAM FATAL( IO)? ERROR|FOAM (exiting|aborting)|Segmentation fault|Floating point exception|Bus error|core dumped|MPI_ABORT|BAD TERMINATION|Primary job terminated|mpirun detected that one or more processes exited|std::bad_alloc|terminate called after throwing|Out of memory|Cannot allocate memory'
+
+
+# ---------------------------------------------------------------------------
+# Utility functions
+# ---------------------------------------------------------------------------
+
+fail()
+{
+    echo
+    echo "==================================================================" >&2
+    echo "CASE EXECUTION STOPPED" >&2
+    echo "$*" >&2
+    echo "==================================================================" >&2
+    exit 1
+}
+
+
+check_log()
+{
+    local step_name="$1"
+    local log_file="$2"
+    local exit_status="$3"
+
+    if [[ ! -f "$log_file" ]]; then
+        fail "[$step_name] Log file was not created: $log_file"
+    fi
+
+    if [[ ! -s "$log_file" ]]; then
+        fail "[$step_name] Log file is empty: $log_file"
+    fi
+
+    # First check the actual process exit status
+    if (( exit_status != 0 )); then
+        echo
+        echo "Last 80 lines of $log_file:"
+        tail -n 80 "$log_file"
+
+        fail "[$step_name] Command returned exit code $exit_status."
+    fi
+
+    # Then check for fatal messages that might not propagate reliably
+    if grep -Ein "$FATAL_REGEX" "$log_file" > /tmp/foam_fatal_matches.$$; then
+        echo
+        echo "Fatal messages detected in $log_file:"
+        tail -n 30 /tmp/foam_fatal_matches.$$
+        rm -f /tmp/foam_fatal_matches.$$
+
+        echo
+        echo "Last 80 lines of $log_file:"
+        tail -n 80 "$log_file"
+
+        fail "[$step_name] Fatal error text was found in the log."
+    fi
+
+    rm -f /tmp/foam_fatal_matches.$$
+
+    # Warnings do not stop the calculation, but report their number
+    local warning_count
+    warning_count="$(
+        grep -Eic 'FOAM Warning|--> FOAM Warning' "$log_file" || true
+    )"
+
+    echo
+    echo "[PASS] $step_name"
+    echo "       Log: $log_file"
+    echo "       Warnings detected: $warning_count"
+}
+
+
+run_checked()
+{
+    local step_name="$1"
+    local log_file="$2"
+    shift 2
+
+    echo
+    echo "=================================================================="
+    echo "Running: $step_name"
+    echo "Command: $*"
+    echo "Log:     $log_file"
+    echo "=================================================================="
+
+    # Prevent an old log from making the run status ambiguous
+    rm -f "$log_file"
+
+    # tee shows output on screen while saving it.
+    # PIPESTATUS[0] is the exit status of the actual command,
+    # not the exit status of tee.
+    "$@" 2>&1 | tee "$log_file"
+    local command_status="${PIPESTATUS[0]}"
+
+    check_log "$step_name" "$log_file" "$command_status"
+}
+
+
+require_log_pattern()
+{
+    local step_name="$1"
+    local log_file="$2"
+    local required_pattern="$3"
+    local description="$4"
+
+    if ! grep -Eq "$required_pattern" "$log_file"; then
+        echo
+        echo "Last 80 lines of $log_file:"
+        tail -n 80 "$log_file"
+
+        fail "[$step_name] Required success marker was not found: $description"
+    fi
+
+    echo "[PASS] $step_name: $description"
+}
+
+
+# ---------------------------------------------------------------------------
+# Prepare initial fields
+# ---------------------------------------------------------------------------
+
+echo
+echo "=================================================================="
+echo "Preparing initial fields"
+echo "=================================================================="
+
+if [[ ! -d initial ]]; then
+    fail "Directory 'initial' does not exist."
+fi
+
+# Avoid cp -r initial 0 creating 0/initial when 0 already exists
+rm -rf 0
+
+if ! cp -a initial 0; then
+    fail "Failed to copy initial directory to 0."
+fi
+
+echo "[PASS] Initial fields copied: initial -> 0"
+
+
+# Remove stale processor directories before decomposition
+rm -rf processor[0-9]*
+
+
+# ---------------------------------------------------------------------------
+# Mesh generation
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "blockMesh" \
+    "log.blockMesh" \
+    blockMesh
+
+
+run_checked \
+    "checkMesh before transformPoints" \
+    "log.checkMesh.beforeTransform" \
+    checkMesh -allGeometry -allTopology
+
+require_log_pattern \
+    "checkMesh before transformPoints" \
+    "log.checkMesh.beforeTransform" \
+    'Mesh OK\.' \
+    "'Mesh OK.' detected"
+
+
+# ---------------------------------------------------------------------------
+# Solid-fraction initialisation
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "setSolidFraction" \
+    "log.setSolidFraction" \
+    setSolidFraction
+
+# For the proposed graded substrate mesh, use the following instead
+# if your setSolidFraction version supports -cellSize:
+#
+# run_checked \
+#     "setSolidFraction" \
+#     "log.setSolidFraction" \
+#     setSolidFraction -cellSize '(5e-6 5e-6 5e-6)'
+
+
+# ---------------------------------------------------------------------------
+# Rotate mesh
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "transformPoints" \
+    "log.transformPoints" \
+    transformPoints "rotate=((0 1 0) (0 0 1))"
+
+
+run_checked \
+    "checkMesh after transformPoints" \
+    "log.checkMesh.afterTransform" \
+    checkMesh -allGeometry -allTopology
+
+require_log_pattern \
+    "checkMesh after transformPoints" \
+    "log.checkMesh.afterTransform" \
+    'Mesh OK\.' \
+    "'Mesh OK.' detected after mesh rotation"
+
+
+# ---------------------------------------------------------------------------
+# Domain decomposition
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "decomposePar" \
+    "log.decomposePar" \
+    decomposePar -force
+
+
+actual_processor_count="$(
+    find . \
+        -maxdepth 1 \
+        -type d \
+        -regextype posix-extended \
+        -regex './processor[0-9]+' |
+        wc -l
+)"
+
+if (( actual_processor_count != NPROCS )); then
+    fail \
+        "[decomposePar] Expected $NPROCS processor directories, "\
+"but found $actual_processor_count."
+fi
+
+echo "[PASS] decomposePar created $actual_processor_count processor directories."
+
+
+# ---------------------------------------------------------------------------
+# Parallel LaserBeamFoam calculation
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "$SOLVER parallel calculation" \
+    "log.${SOLVER}" \
+    mpirun -np "$NPROCS" "$SOLVER" -parallel
+
+
+# Most OpenFOAM solvers print a standalone "End" after normal completion.
+# This catches interrupted runs that did not contain a recognised fatal string.
+require_log_pattern \
+    "$SOLVER parallel calculation" \
+    "log.${SOLVER}" \
+    '^[[:space:]]*End[[:space:]]*$' \
+    "normal OpenFOAM termination marker 'End' detected"
+
+
+# ---------------------------------------------------------------------------
+# Reconstruction
+# ---------------------------------------------------------------------------
+
+run_checked \
+    "reconstructPar" \
+    "log.reconstructPar" \
+    reconstructPar
+
+
+# Processor directories are removed only after reconstruction succeeds
+rm -rf processor[0-9]*
+
+echo
+echo "=================================================================="
+echo "ALL STEPS COMPLETED SUCCESSFULLY"
+echo "Solver:     $SOLVER"
+echo "Processors: $NPROCS"
+echo "Case:       $PWD"
+echo "=================================================================="
