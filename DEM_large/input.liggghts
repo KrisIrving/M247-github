@@ -9,7 +9,7 @@ communicate		single vel yes
 
 units 			cgs
 
-region			domain block 0.0 0.03 0.0 0.15 0.0 0.05 units box
+region			domain block 0.0 0.15 0.0 0.15 0.0 0.05 units box
 
 create_box		1 domain
 
@@ -73,9 +73,9 @@ fix pdd all particledistribution/discrete 78593 10 &
     pts10 0.03855913
 
 # Insert particles from above the powder bed.
-region 	factory block 0.0 0.03 0.0 0.15 0.02 0.05 units box
+region 	factory block 0.0 0.15 0.0 0.15 0.02 0.05 units box
 fix ins all insert/rate/region seed 51869 distributiontemplate pdd &
-	nparticles 1250 particlerate 200000 insert_every 1000 &
+	nparticles 6250 particlerate 1250000 insert_every 1000 &
 	overlapcheck yes vel constant 0. 0. 0.0 region factory ntry_mc 10000
 				
 			
