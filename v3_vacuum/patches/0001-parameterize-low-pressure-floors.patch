@@ -1,5 +1,5 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-Subject: [PATCH] Parameterize low-pressure numerical floors
+Subject: [PATCH] Parameterize low-pressure numerical guards
 
 Baseline:
   laserbeamfoam/LaserbeamFoam
@@ -7,19 +7,43 @@ Baseline:
   3c93f2657e089e22e9a8298648292969e85a4bad
 
 Purpose:
-  Expose low-pressure numerical guards needed for vacuum verification while
-  preserving all upstream default values. This patch intentionally does not
-  change the Hertz-Knudsen/Clausius-Clapeyron physical formulation.
+  Expose the hard-coded low-pressure numerical guards that are active for
+  sub-Pa vacuum verification while preserving upstream default behaviour.
+
+  This patch deliberately does NOT change the Clausius-Clapeyron /
+  Hertz-Knudsen phase-change law and does NOT add an empirical recoil term.
 
 ---
- applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C | 22 +++++++++++++++++-----
- applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H                                      |  5 ++++-
- 2 files changed, 21 insertions(+), 6 deletions(-)
+ applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C | 55 ++++++++++++++++++++++++++++++++-----
+ applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H                                      |  5 +++-
+ 2 files changed, 52 insertions(+), 8 deletions(-)
 
 diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
 --- a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
 +++ b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
-@@ -407,12 +407,17 @@ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
+@@ -145,6 +145,20 @@ Foam::multiphaseMixtureThermo::multiphaseMixtureThermo
+     alphas_.write();
+     correct();                  // therm    o (phase densities) are valid after this
+ 
++    Info<< "Low-pressure numerical controls:" << nl
++        << "    rhoMinEOS                  = "
++        << lookupOrDefault<scalar>("rhoMinEOS", 1e-3) << " kg/m3" << nl
++        << "    pSmallSat                  = "
++        << lookupOrDefault<scalar>("pSmallSat", 1.0) << " Pa" << nl
++        << "    phaseChangeRhoFloor        = "
++        << lookupOrDefault<scalar>("phaseChangeRhoFloor", 0.01) << " kg/m3" << nl
++        << "    partialMassRhoFloor        = "
++        << lookupOrDefault<scalar>("partialMassRhoFloor", 1e-3) << " kg/m3" << nl
++        << "    recoveryRhoFloor           = "
++        << lookupOrDefault<scalar>("recoveryRhoFloor", 1e-3) << " kg/m3" << nl
++        << "    implicitCouplingPressureFloor = "
++        << lookupOrDefault<scalar>("implicitCouplingPressureFloor", 1e4) << " Pa"
++        << endl;
++
+          c_.setSize(phases_.size());
+     c0_.setSize(phases_.size());
+ 
+@@ -407,12 +421,17 @@ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
  {
 +    const scalar rhoMinEOSValue
 +    (
@@ -33,11 +57,15 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
          // was 1e-4.. 1/rho feeds the p matrix coefficients and the extra
          // decade of conditioning bought nothing, match the other floors
 -        rhoPh = max(rhoPh, dimensionedScalar("rhoMinEOS", dimDensity, 1e-3));
-+        rhoPh = max(rhoPh, dimensionedScalar("rhoMinEOS", dimDensity, rhoMinEOSValue));
++        rhoPh = max
++        (
++            rhoPh,
++            dimensionedScalar("rhoMinEOS", dimDensity, rhoMinEOSValue)
++        );
      }
  }
  
-@@ -1959,7 +1964,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+@@ -1959,7 +1978,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
                                  (
                                      p_,
                                      dimensionedScalar
@@ -45,37 +73,79 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
 +                                    (
 +                                        "pSmallSat",
 +                                        P0.dimensions(),
-+                                        phasedictionary.lookupOrDefault<scalar>("pSmallSat", 1.0)
++                                        phasedictionary.getOrDefault<scalar>
++                                        (
++                                            "pSmallSat",
++                                            1.0
++                                        )
 +                                    )
                                  )
                                 /(
                                      max
-@@ -2257,7 +2266,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
-                         max
-                         (
-                             liq.thermo().rho(),
--                            dimensionedScalar("rhoFloorPC", dimDensity, 1e-3)
-+                            dimensionedScalar
-+                            (
-+                                "rhoFloorPC", dimDensity,
-+                                phasedictionary.lookupOrDefault<scalar>("betaSourceRhoFloor", 1e-3)
-+                            )
-                         )
-                     );
-                     SuBeta += SuMass[li]/rhoLiq;     // = -r_i/rho_liq_i
-@@ -2366,7 +2379,10 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+@@ -2366,7 +2392,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
      );
  
      {
 -        const dimensionedScalar rhoFloorY("rhoFloorY", dimDensity, 1e-3);
 +        const dimensionedScalar rhoFloorY
 +        (
-+            "rhoFloorY", dimDensity,
-+            phasedictionary.lookupOrDefault<scalar>("partialMassRhoFloor", 1e-3)
++            "rhoFloorY",
++            dimDensity,
++            phasedictionary.getOrDefault<scalar>
++            (
++                "partialMassRhoFloor",
++                1e-3
++            )
 +        );
          label i = 0;
          for (phaseModel& ph : phases_)
          {
+@@ -2785,7 +2818,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+             //  densities at the current p and T, and they never quite do (species move
+             //  once per step with last steps fluxes while p moves by bars at the spot)
+                 //  so a defect builds every step.....
+ 
+-    const dimensionedScalar rhoMinRec("rhoMinRec", dimDensity, 1e-3);
++    const dimensionedScalar rhoMinRec
++    (
++        "rhoMinRec",
++        dimDensity,
++        phasedictionary.getOrDefault<scalar>
++        (
++            "recoveryRhoFloor",
++            1e-3
++        )
++    );
+ 
+     // closure trust
+     //   closureGasFracMin: the gas mass-balance must explain at least this
+@@ -3032,6 +3072,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+     if (vDotPptr)
+     {
+         const scalar implicitVolLimit =
+             phasedictionary.getOrDefault<scalar>("implicitVolLimit", 0.2);
++        const scalar implicitCouplingPressureFloor =
++            phasedictionary.getOrDefault<scalar>
++            (
++                "implicitCouplingPressureFloor", 1e4
++            );
+ 
+         scalarField& vpI = vDotPptr->primitiveFieldRef();
+         const scalarField& pI = p_.primitiveField();
+@@ -3042,7 +3087,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+         forAll(vpI, celli)
+         {
+             const scalar kPmax =
+-                implicitVolLimit*rDeltaT/Foam::max(pI[celli], scalar(1e4));
++                implicitVolLimit*rDeltaT
++               /Foam::max
++                (
++                    pI[celli],
++                    implicitCouplingPressureFloor
++                );
+             if (vpI[celli] > kPmax)
+             {
+                 vpI[celli] = kPmax;
 diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
 --- a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
 +++ b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
@@ -86,7 +156,8 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/appli
 -        const volScalarField pSafe(max(p, dimensionedScalar(dimPressure, 1e4)));
 -const volScalarField c
 +        const scalar acousticPressureFloor =
-+            runTime.controlDict().getOrDefault<scalar>("acousticPressureFloor", 1e4);
++            runTime.controlDict().getOrDefault<scalar>
++            ("acousticPressureFloor", 1e4);
 +        const volScalarField pSafe
 +            (max(p, dimensionedScalar(dimPressure, acousticPressureFloor)));
 +        const volScalarField c
