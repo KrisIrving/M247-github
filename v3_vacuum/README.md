@@ -26,6 +26,15 @@ a different source revision without re-auditing the changed code paths.
 
 ## Current status
 
+Local execution update (2026-09-22): latest upstream was freshly installed in
+Ubuntu-24.04 / WSL2 with OpenFOAM v2512. Upstream and patched builds succeeded;
+V0 tests, a **20 ps official-mesh default regression**, and **20 ns Ar screens
+at two floor scales** passed. These short screens do not close the full V0-B gate.
+
+- [Execution evidence and remaining issues](results/2026-09-22/README.md)
+- [Development plan / 开发计划](docs/development_plan.md)
+- [Local installation and replay commands](docs/local_v2512.md)
+
 Completed in this development branch:
 
 - [x] low-pressure source audit
@@ -37,9 +46,10 @@ Completed in this development branch:
 
 Not yet completed:
 
-- [ ] patch compile under OpenFOAM v2512
+- [x] patch compile under OpenFOAM v2512
 - [ ] patched-default regression against upstream (V0-B workflow added)
-- [ ] 0.6 Pa Ar no-laser smoke test (generator/checks added; execution pending)
+- [x] short 0.6 Pa Ar no-laser smoke screen, including decade-lower guards
+- [ ] long-time Ar stability and linear-solver convergence investigation
 - [ ] planar evaporation CFD verification
 - [ ] Calta/Bidare external validation
 - [ ] final M247 V3 case

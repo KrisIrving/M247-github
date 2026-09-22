@@ -3,6 +3,11 @@
 This stage is the first OpenFOAM execution gate for the LaserBeamFoam V3
 vacuum-development path.
 
+2026-09-22: short default regression and two short Ar screens now pass locally.
+See `../../results/2026-09-22/README.md`. Full-duration regression and long-time
+Ar stability remain pending. The generated Ar case uses 1536 cells and zero
+gravity to define a stationary reference, with the original coordinate rotation.
+
 It has two independent purposes:
 
 1. **patched-default regression** -- prove that
@@ -34,19 +39,29 @@ Recommended workflow:
 # 1. clean upstream checkout at audited SHA
 git checkout 3c93f2657e089e22e9a8298648292969e85a4bad
 
-# 2. compile unmodified source and save executable
+# 2. compile unmodified source and save executable AND dependent user libraries
 ./Allwmake
-cp "$(which compressibleLaserbeamFoam)" ./compressibleLaserbeamFoam.upstream
+mkdir -p ../v3-builds/upstream
+cp -a "$FOAM_USER_APPBIN" ../v3-builds/upstream/bin
+cp -a "$FOAM_USER_LIBBIN" ../v3-builds/upstream/lib
 
 # 3. apply project patch
 bash /path/to/M247-github/v3_vacuum/patches/apply_vacuum_patch.sh "$PWD"
 
 # 4. rebuild and save patched executable
 ./Allwmake
-cp "$(which compressibleLaserbeamFoam)" ./compressibleLaserbeamFoam.patched
+# Keep the patched build in FOAM_USER_APPBIN / FOAM_USER_LIBBIN.
 ```
 
 Run the same copied tutorial with the two executables. At minimum compare:
+
+Select both PATH and LD_LIBRARY_PATH together. Saving only an executable is
+insufficient because phase-change code lives in `libmultiphaseVapMixtureThermo.so`.
+Use `../../scripts/env_v2512.sh upstream` or `patched` on the documented local setup.
+`prepare_default_regression.sh` generates official-mesh inputs without the new
+controls. Its default endTime is **2e-11 s**, a startup regression only. Pass
+`1e-4` explicitly for the complete official duration. Compare with
+`compare_default_cases.py upstream_case patched_case --json report.json`.
 
 - end time reached;
 - no FOAM FATAL ERROR;
@@ -103,6 +118,24 @@ Then analyse:
 ```bash
 python3 ../analyse_case.py .
 ```
+
+The analyser now reads uniform and nonuniform scalar/vector ASCII internal fields
+at every written time, requires the actual `rho` field, checks completion, and
+returns nonzero on missing results, fatal errors or failed field tolerances.
+`--json report.json` also saves the timestep history. It does not parse binary,
+compressed or decomposed fields; use serial output or reconstruct first.
+The OpenFOAM native checks independently include boundary extrema at latest time.
+
+Generate the decade-lower screening case with:
+
+```bash
+bash prepare_case.sh /path/to/LaserbeamFoam ./case_V0B_floor01 0.1
+```
+
+The short-screen thresholds are fixed in `analyse_case.py`: pressure relative
+error 1e-4, density relative error 1e-4, temperature absolute error 1e-3 K,
+speed 1e-6 m/s, phase-fraction error 1e-10. Reaching these thresholds does not
+prove linear-solver convergence or long-time stability.
 
 ## Initial vacuum-control values
 
