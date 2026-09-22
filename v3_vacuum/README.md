@@ -38,8 +38,8 @@ Completed in this development branch:
 Not yet completed:
 
 - [ ] patch compile under OpenFOAM v2512
-- [ ] patched-default regression against upstream
-- [ ] 0.6 Pa Ar no-laser smoke test
+- [ ] patched-default regression against upstream (V0-B workflow added)
+- [ ] 0.6 Pa Ar no-laser smoke test (generator/checks added; execution pending)
 - [ ] planar evaporation CFD verification
 - [ ] Calta/Bidare external validation
 - [ ] final M247 V3 case
@@ -59,10 +59,15 @@ v3_vacuum/
 ├── scripts/
 │   └── check_v3_upstream.sh
 └── validation/
-    └── V0_HK_verification/
+    ├── V0_HK_verification/
+    │   ├── README.md
+    │   ├── hk_reference.py
+    │   └── test_hk_reference.py
+    └── V0B_argon_smoke/
         ├── README.md
-        ├── hk_reference.py
-        └── test_hk_reference.py
+        ├── prepare_case.sh
+        ├── analyse_case.py
+        └── run_field_checks.sh
 ```
 
 ## Verify the local solver identity first
@@ -121,3 +126,25 @@ dynamics.
 
 See `docs/vacuum_source_audit.md` for the source-level decisions and the
 stop/go gate before M247 production.
+
+
+## Run V0-B
+
+After applying and compiling the parameterized vacuum patch:
+
+```bash
+cd v3_vacuum/validation/V0B_argon_smoke
+
+bash prepare_case.sh \
+    /path/to/LaserbeamFoam \
+    ./case_V0B_Ar_0p6Pa
+
+cd case_V0B_Ar_0p6Pa
+bash Allrun
+
+cd ..
+python3 analyse_case.py case_V0B_Ar_0p6Pa
+bash run_field_checks.sh case_V0B_Ar_0p6Pa
+```
+
+V0-B must pass before the planar-evaporation V1 case is accepted.
