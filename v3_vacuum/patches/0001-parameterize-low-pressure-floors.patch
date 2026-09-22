@@ -1,0 +1,97 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+Subject: [PATCH] Parameterize low-pressure numerical floors
+
+Baseline:
+  laserbeamfoam/LaserbeamFoam
+  OpenFoam_com_main
+  3c93f2657e089e22e9a8298648292969e85a4bad
+
+Purpose:
+  Expose low-pressure numerical guards needed for vacuum verification while
+  preserving all upstream default values. This patch intentionally does not
+  change the Hertz-Knudsen/Clausius-Clapeyron physical formulation.
+
+---
+ applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C | 22 +++++++++++++++++-----
+ applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H                                      |  5 ++++-
+ 2 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+--- a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
++++ b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+@@ -407,12 +407,17 @@ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
+ {
++    const scalar rhoMinEOSValue
++    (
++        lookupOrDefault<scalar>("rhoMinEOS", 1e-3)
++    );
++
+     for (phaseModel& phase : phases_)
+     {
+         volScalarField& rhoPh = phase.thermo().rho();
+         rhoPh += phase.thermo().psi()*dp;
+         // was 1e-4.. 1/rho feeds the p matrix coefficients and the extra
+         // decade of conditioning bought nothing, match the other floors
+-        rhoPh = max(rhoPh, dimensionedScalar("rhoMinEOS", dimDensity, 1e-3));
++        rhoPh = max(rhoPh, dimensionedScalar("rhoMinEOS", dimDensity, rhoMinEOSValue));
+     }
+ }
+ 
+@@ -1959,7 +1964,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+                                 (
+                                     p_,
+                                     dimensionedScalar
+-                                    ("pSmallSat", P0.dimensions(), 1.0)
++                                    (
++                                        "pSmallSat",
++                                        P0.dimensions(),
++                                        phasedictionary.lookupOrDefault<scalar>("pSmallSat", 1.0)
++                                    )
+                                 )
+                                /(
+                                     max
+@@ -2257,7 +2266,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+                         max
+                         (
+                             liq.thermo().rho(),
+-                            dimensionedScalar("rhoFloorPC", dimDensity, 1e-3)
++                            dimensionedScalar
++                            (
++                                "rhoFloorPC", dimDensity,
++                                phasedictionary.lookupOrDefault<scalar>("betaSourceRhoFloor", 1e-3)
++                            )
+                         )
+                     );
+                     SuBeta += SuMass[li]/rhoLiq;     // = -r_i/rho_liq_i
+@@ -2366,7 +2379,10 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+     );
+ 
+     {
+-        const dimensionedScalar rhoFloorY("rhoFloorY", dimDensity, 1e-3);
++        const dimensionedScalar rhoFloorY
++        (
++            "rhoFloorY", dimDensity,
++            phasedictionary.lookupOrDefault<scalar>("partialMassRhoFloor", 1e-3)
++        );
+         label i = 0;
+         for (phaseModel& ph : phases_)
+         {
+diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
+--- a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
++++ b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
+@@ -14,8 +14,11 @@ if (adjustTimeStep)
+ 
+     scalar acousticCoNum = 0.0;
+     {
+-        const volScalarField pSafe(max(p, dimensionedScalar(dimPressure, 1e4)));
+-const volScalarField c
++        const scalar acousticPressureFloor =
++            runTime.controlDict().getOrDefault<scalar>("acousticPressureFloor", 1e4);
++        const volScalarField pSafe
++            (max(p, dimensionedScalar(dimPressure, acousticPressureFloor)));
++        const volScalarField c
+ (
+     sqrt(max(mixture.gamma()*pSafe/max(mixture.rho(), dimensionedScalar(dimDensity, SMALL)),
+              dimensionedScalar(sqr(dimVelocity), Zero)))
+-- 
+2.43.0
