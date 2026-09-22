@@ -8,26 +8,26 @@ CASE="${1:-.}"
 cd "$CASE" || exit 1
 
 echo "==== latest time ===="
-foamListTimes -latestTime 2>/dev/null || true
+foamListTimes -latestTime || exit 1
 
 echo
 echo "==== p ===="
-postProcess -latestTime -func "fieldMinMax(p)" 2>/dev/null || true
+postProcess -latestTime -func "fieldMinMax(p)" || exit 1
 
 echo
 echo "==== rho ===="
-postProcess -latestTime -func "fieldMinMax(rho)" 2>/dev/null || true
+postProcess -latestTime -func "fieldMinMax(rho)" || exit 1
 
 echo
 echo "==== T ===="
-postProcess -latestTime -func "fieldMinMax(T)" 2>/dev/null || true
+postProcess -latestTime -func "fieldMinMax(T)" || exit 1
 
 echo
 echo "==== U ===="
-postProcess -latestTime -func "fieldMinMax(U)" 2>/dev/null || true
+postProcess -latestTime -func "fieldMinMax(U)" || exit 1
 
 echo
 echo "==== phase fractions ===="
-postProcess -latestTime -func "fieldMinMax(alpha.air)" 2>/dev/null || true
-postProcess -latestTime -func "fieldMinMax(alpha.metal1)" 2>/dev/null || true
-postProcess -latestTime -func "fieldMinMax(alpha.metal1vapour)" 2>/dev/null || true
+postProcess -latestTime -func "fieldMinMax(alpha.air)" || exit 1
+postProcess -latestTime -func "fieldMinMax(alpha.metal1)" || exit 1
+postProcess -latestTime -func "fieldMinMax(alpha.metal1vapour)" || exit 1

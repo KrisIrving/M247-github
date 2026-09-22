@@ -22,7 +22,7 @@ fi
 HERE="$(cd "$(dirname "$0")" && pwd)"
 PATCH="$HERE/0001-parameterize-low-pressure-floors.patch"
 
-CURRENT_SHA="$(git -C "$LBF_DIR" rev-parse HEAD)"
+CURRENT_SHA="$(git -C "$LBF_DIR" rev-parse HEAD)" || exit 2
 
 echo "LaserBeamFoam: $LBF_DIR"
 echo "Current SHA  : $CURRENT_SHA"
@@ -37,14 +37,14 @@ fi
 
 echo
 echo "Checking patch..."
-git -C "$LBF_DIR" apply --check "$PATCH"
+git -C "$LBF_DIR" apply --check "$PATCH" || exit 4
 
 echo "Applying patch..."
-git -C "$LBF_DIR" apply "$PATCH"
+git -C "$LBF_DIR" apply "$PATCH" || exit 4
 
 echo
 echo "Checking resulting diff..."
-git -C "$LBF_DIR" diff --check
+git -C "$LBF_DIR" diff --check || exit 5
 
 echo
 echo "Patch applied. Review with:"

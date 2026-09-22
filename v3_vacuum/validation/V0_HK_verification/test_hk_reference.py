@@ -47,7 +47,7 @@ class TestHKReference(unittest.TestCase):
 
     def test_argon_target_density(self):
         rho = hk.ideal_gas_density(0.6, 1343.15, 0.039948)
-        self.assertAlmostEqual(rho, 2.146e-6, delta=2e-10)
+        self.assertAlmostEqual(rho, 2.1462859870811836e-6, delta=1e-15)
 
 
 if __name__ == "__main__":

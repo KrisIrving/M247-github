@@ -4,11 +4,12 @@
 # LaserBeamFoam V3 LPBF_small_vapour tutorial.
 #
 # Usage:
-#   bash prepare_case.sh /path/to/LaserbeamFoam [output_case]
+#   bash prepare_case.sh /path/to/LaserbeamFoam [output_case] [floor_scale]
 
 LBF_DIR="${1:-}"
 OUT_DIR="${2:-case_V0B_Ar_0p6Pa}"
 EXPECTED_SHA="3c93f2657e089e22e9a8298648292969e85a4bad"
+FLOOR_SCALE="${3:-1}"
 
 if [ -z "$LBF_DIR" ]; then
     echo "Usage: $0 /path/to/LaserbeamFoam [output_case]"
@@ -40,8 +41,11 @@ if [ -e "$OUT_DIR" ]; then
     exit 5
 fi
 
-cp -a "$SRC" "$OUT_DIR"
-rm -rf "$OUT_DIR/DEM_small" "$OUT_DIR/postProcessing" "$OUT_DIR"/[1-9]*        "$OUT_DIR"/processor* "$OUT_DIR"/log.* 2>/dev/null || true
+# Copy only inputs. Never delete directories selected by user input.
+mkdir -p "$OUT_DIR" || exit 5
+for part in initial constant system; do
+    cp -a "$SRC/$part" "$OUT_DIR/" || exit 5
+done
 
 # Keep the official field name alpha.air to minimise changes in V0-B.
 # Replace only the physical properties of that phase with argon.
@@ -95,12 +99,15 @@ mixture
 }
 EOF
 
-python3 - "$OUT_DIR" <<'PY'
+python3 - "$OUT_DIR" "$FLOOR_SCALE" <<'PY'
 from pathlib import Path
 import re
 import sys
 
 case = Path(sys.argv[1])
+floor_scale = float(sys.argv[2])
+if not 0 < floor_scale <= 1:
+    raise SystemExit("floor_scale must be in (0, 1]")
 T0 = "1343.15"
 P0 = "0.6"
 
@@ -111,6 +118,12 @@ def replace_once(path, pattern, repl, flags=0):
     if n != 1:
         raise SystemExit(f"Expected one match in {p}: {pattern!r}, got {n}")
     p.write_text(ns)
+
+# Static uniform reservoir: gravity would introduce a hydrostatic transient.
+# Retain the tutorial coordinate rotation in Allrun.
+replace_once("constant/g", r"\bvalue\s+\([^;]+;", "value (0 0 0);")
+# A gas-only equilibrium does not need the 192,000-cell powder mesh.
+replace_once("system/blockMeshDict", r"\(40 60 80\)", "(8 12 16)")
 
 # Temperature fields: mixture + per-phase.
 for rel in ["initial/T", "initial/T.air", "initial/T.metal1", "initial/T.metal1vapour"]:
@@ -142,6 +155,7 @@ replace_once("system/controlDict", r"endTime\s+[^;]+;", "endTime         2e-8;")
 replace_once("system/controlDict", r"deltaT\s+[^;]+;", "deltaT          1e-12;")
 replace_once("system/controlDict", r"writeInterval\s+[^;]+;", "writeInterval   2e-9;")
 replace_once("system/controlDict", r"maxDeltaT\s+[^;]+;", "maxDeltaT       1e-10;")
+replace_once("system/controlDict", r"writePrecision\s+[^;]+;", "writePrecision  12;")
 
 # Add acoustic pressure floor to controlDict.
 control = case / "system/controlDict"
@@ -167,17 +181,44 @@ phaseChangeMaskPatches        (topWall);
 if "rhoMinEOS" not in s:
     s += "\n" + controls
 tp.write_text(s)
+
+# One joint decade reduction is a stationary-state screen, not a full
+# one-at-a-time phase-change sensitivity study.
+for rel, keys in {
+    "system/controlDict": ["acousticPressureFloor"],
+    "constant/thermophysicalProperties": [
+        "pMin", "rhoMinEOS", "pSmallSat", "phaseChangeRhoFloor",
+        "partialMassRhoFloor", "recoveryRhoFloor", "implicitCouplingPressureFloor",
+    ],
+}.items():
+    p = case / rel
+    s = p.read_text()
+    for key in keys:
+        s, n = re.subn(rf"(\b{key}\s+)([-+0-9.eE]+)(\s*;)",
+                      lambda m: f"{m[1]}{float(m[2])*floor_scale:.12g}{m[3]}", s)
+        if n != 1:
+            raise SystemExit(f"Expected one {key} in {p}, got {n}")
+    p.write_text(s)
 PY
+if [ "$?" -ne 0 ]; then
+    echo "Case generation failed; do not run the incomplete output."
+    exit 6
+fi
 
 cat > "$OUT_DIR/Allrun" <<'EOF'
 #!/usr/bin/env bash
-. "$WM_PROJECT_DIR/bin/tools/RunFunctions"
+. "${WM_PROJECT_DIR:?Source OpenFOAM v2512 first}/bin/tools/RunFunctions" || exit 1
 
-rm -rf 0
-cp -a initial 0
+cd "$(dirname "$0")" || exit 1
+if [ -e 0 ]; then
+    echo "Existing 0 directory: choose a fresh case to avoid stale results."
+    exit 1
+fi
+cp -a initial 0 || exit 1
 
-runApplication blockMesh
-runApplication compressibleLaserbeamFoam
+runApplication blockMesh || exit 1
+runApplication transformPoints -rotate '((0 1 0) (0 0 1))' || exit 1
+runApplication compressibleLaserbeamFoam || exit 1
 EOF
 chmod +x "$OUT_DIR/Allrun"
 
@@ -189,6 +230,9 @@ Physical target:
   temperature = 1343.15 K
   gas = Ar (phase name retained as 'air' for minimal perturbation)
   laser power = 0 W
+  gravity = zero (stationary reservoir verification only)
+  mesh = 8 x 12 x 16; original tutorial rotation retained
+  numerical floor scale = $FLOOR_SCALE
 Interpretation:
   effective low-pressure reservoir smoke test only; not rarefied-gas validation.
 EOF

@@ -1,27 +1,8 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-Subject: [PATCH] Parameterize low-pressure numerical guards
-
-Baseline:
-  laserbeamfoam/LaserbeamFoam
-  OpenFoam_com_main
-  3c93f2657e089e22e9a8298648292969e85a4bad
-
-Purpose:
-  Expose the hard-coded low-pressure numerical guards that are active for
-  sub-Pa vacuum verification while preserving upstream default behaviour.
-
-  This patch deliberately does NOT change the Clausius-Clapeyron /
-  Hertz-Knudsen phase-change law and does NOT add an empirical recoil term.
-
----
- applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C | 55 ++++++++++++++++++++++++++++++++-----
- applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H                                      |  5 +++-
- 2 files changed, 52 insertions(+), 8 deletions(-)
-
 diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+index 365b55b4..2a7be4a9 100644
 --- a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
 +++ b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
-@@ -145,6 +145,20 @@ Foam::multiphaseMixtureThermo::multiphaseMixtureThermo
+@@ -149,6 +149,21 @@ Foam::multiphaseMixtureThermo::multiphaseMixtureThermo
      alphas_.write();
      correct();                  // therm    o (phase densities) are valid after this
  
@@ -43,7 +24,9 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
           c_.setSize(phases_.size());
      c0_.setSize(phases_.size());
  
-@@ -407,12 +421,17 @@ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
+@@ -406,13 +421,22 @@ void Foam::multiphaseMixtureThermo::correct()
+ 
+ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
  {
 +    const scalar rhoMinEOSValue
 +    (
@@ -65,7 +48,7 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
      }
  }
  
-@@ -1959,7 +1978,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+@@ -1961,7 +1985,15 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
                                  (
                                      p_,
                                      dimensionedScalar
@@ -82,7 +65,7 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
                                  )
                                 /(
                                      max
-@@ -2366,7 +2392,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+@@ -2366,7 +2398,16 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
      );
  
      {
@@ -100,10 +83,9 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
          label i = 0;
          for (phaseModel& ph : phases_)
          {
-@@ -2785,7 +2818,14 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
-             //  densities at the current p and T, and they never quite do (species move
-             //  once per step with last steps fluxes while p moves by bars at the spot)
-                 //  so a defect builds every step.....
+@@ -2785,7 +2826,16 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+         //  once per step with last steps fluxes while p moves by bars at the spot)
+             //  so a defect builds every step.....
  
 -    const dimensionedScalar rhoMinRec("rhoMinRec", dimDensity, 1e-3);
 +    const dimensionedScalar rhoMinRec
@@ -119,8 +101,7 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
  
      // closure trust
      //   closureGasFracMin: the gas mass-balance must explain at least this
-@@ -3032,6 +3072,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
-     if (vDotPptr)
+@@ -3034,6 +3084,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
      {
          const scalar implicitVolLimit =
              phasedictionary.getOrDefault<scalar>("implicitVolLimit", 0.2);
@@ -132,7 +113,7 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
  
          scalarField& vpI = vDotPptr->primitiveFieldRef();
          const scalarField& pI = p_.primitiveField();
-@@ -3042,7 +3087,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+@@ -3042,7 +3097,12 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
          forAll(vpI, celli)
          {
              const scalar kPmax =
@@ -147,9 +128,10 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThe
              {
                  vpI[celli] = kPmax;
 diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
+index c12e4eed..1ec8d4dd 100644
 --- a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
 +++ b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
-@@ -14,8 +14,11 @@ if (adjustTimeStep)
+@@ -15,8 +15,12 @@ if (adjustTimeStep)
  
      scalar acousticCoNum = 0.0;
      {
@@ -164,5 +146,3 @@ diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/appli
  (
      sqrt(max(mixture.gamma()*pSafe/max(mixture.rho(), dimensionedScalar(dimDensity, SMALL)),
               dimensionedScalar(sqr(dimVelocity), Zero)))
--- 
-2.43.0
