@@ -58,4 +58,4 @@
   "linear_solves_at_1000_iterations": 0,
   "floor_interpretation": "p/rho can be compared with guards; inactive phase-change branches are untested",
   "errors": []
-}\n
+}
