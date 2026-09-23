@@ -38,3 +38,11 @@
   `compare_default_cases.py` 传 `--allow-fv-solution`，该选项只允许差异在求解器字典。
 
 完整 OpenFOAM 日志保存在本机 WSL 验证目录，不纳入 Git，以免把大文件写入源码库。
+
+### V1 平面蒸发
+
+`../validation/V1_planar_evaporation/README.md` 记录了 HK 源项、液汽质量转移、潜热
+关系以及网格/时间步/界面宽度/温度/压力敏感性。对应的 `v1-planar-*.json` 是小型
+结构化报告；100 步结果明确标记 NEEDS_REVIEW，因为闭合反馈触发限幅。短时源项与
+质量耦合通过不代表持续闭合稳定，也不代表已验证 M247 真空 LPBF。
+
