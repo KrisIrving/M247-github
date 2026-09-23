@@ -1,0 +1,7 @@
+__pycache__/
+case_*/
+results/**/*.log
+results/**/*.stdout
+results/**/cases/
+results/**/build/
+validation/V0_HK_verification/v0_hk_sweep.csv

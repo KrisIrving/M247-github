@@ -1,0 +1,30 @@
+diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+--- a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
++++ b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+@@ -3155,5 +3155,11 @@
+         if (closureRelax > 0)
+         {
++            const bool closureExplicitVolumeSource =
++                phasedictionary.getOrDefault<bool>("closureExplicitVolumeSource", true);
++            const bool closurePressureJacobian =
++                phasedictionary.getOrDefault<bool>("closurePressureJacobian", true);
++            Info<< "closure terms: explicit PCR = " << closureExplicitVolumeSource
++                << ", pressure Jacobian = " << closurePressureJacobian << endl;
+             const scalarField& sI = sumImplied.primitiveField();
+             const scalar srcMax = closureVolLimit*rDeltaT;
+ 
+@@ -3185,9 +3191,12 @@
+                 src[celli] = s;
+             }
+ 
+-            PCR.primitiveFieldRef() += src;
++            if (closureExplicitVolumeSource)
++            {
++                PCR.primitiveFieldRef() += src;
++            }
+ 
+-            if (vDotPptr)
++            if (vDotPptr && closurePressureJacobian)
+             {
+                 scalarField kPc(mesh_.nCells(), 0.0);
+                 label i = 0;

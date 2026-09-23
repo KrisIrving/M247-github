@@ -1,0 +1,362 @@
+{
+  "log": "/home/kris/OpenFOAM/kris-v2512/v3-validation/iteration-probes-v4/case_p_rgh_krylov/log.compressibleLaserbeamFoam",
+  "iteration_cap": 1000,
+  "status": "CAP_HITS",
+  "solves_by_equation_and_solver": {
+    "T [smoothSolver]": {
+      "solves": 20,
+      "cap_hits": 20,
+      "max_iterations": 1000,
+      "max_hit_final_residual": 0.0808489251248,
+      "worst_hit_initial_residual": 0.0982259798682
+    },
+    "Ux [smoothSolver]": {
+      "solves": 20,
+      "cap_hits": 0,
+      "max_iterations": 29,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "Uy [smoothSolver]": {
+      "solves": 20,
+      "cap_hits": 0,
+      "max_iterations": 32,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "Uz [smoothSolver]": {
+      "solves": 20,
+      "cap_hits": 0,
+      "max_iterations": 28,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "p_rgh [DICPCG]": {
+      "solves": 220,
+      "cap_hits": 0,
+      "max_iterations": 1,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "p_rgh [GAMGPCG]": {
+      "solves": 20,
+      "cap_hits": 0,
+      "max_iterations": 1,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "pcorr [GAMGPCG]": {
+      "solves": 4,
+      "cap_hits": 0,
+      "max_iterations": 0,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    }
+  },
+  "steps_with_most_cap_hits": [
+    {
+      "time": 1.1976e-12,
+      "deltaT": 1.19760479042e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 2.6382e-12,
+      "deltaT": 1.44059706674e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 4.36945e-12,
+      "deltaT": 1.73124384336e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 6.45062e-12,
+      "deltaT": 2.08117610957e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 8.93202e-12,
+      "deltaT": 2.48140228449e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.19175e-11,
+      "deltaT": 2.98543712352e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.54662e-11,
+      "deltaT": 3.54872714683e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.97577e-11,
+      "deltaT": 4.29148399151e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 2.49075e-11,
+      "deltaT": 5.14978078982e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 3.11608e-11,
+      "deltaT": 6.25330524478e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 3.88353e-11,
+      "deltaT": 7.67451098223e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 4.77889e-11,
+      "deltaT": 8.95359614593e-12,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 5.86611e-11,
+      "deltaT": 1.08722238915e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 7.15101e-11,
+      "deltaT": 1.28489918718e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 8.75713e-11,
+      "deltaT": 1.60612398397e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.06309e-10,
+      "deltaT": 1.87381131463e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.29732e-10,
+      "deltaT": 2.34226414329e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.53155e-10,
+      "deltaT": 2.34226414329e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 1.76577e-10,
+      "deltaT": 2.34226414329e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    },
+    {
+      "time": 2e-10,
+      "deltaT": 2.34226414329e-11,
+      "linear_solves": 16,
+      "cap_hits": 1
+    }
+  ],
+  "cap_hit_examples": [
+    {
+      "time": 1.1976e-12,
+      "line": 144,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.00558218132189,
+      "final_residual": 0.00468298162081
+    },
+    {
+      "time": 2.6382e-12,
+      "line": 206,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0062311313882,
+      "final_residual": 0.00519555983647
+    },
+    {
+      "time": 4.36945e-12,
+      "line": 268,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.00763162258757,
+      "final_residual": 0.0064325410752
+    },
+    {
+      "time": 6.45062e-12,
+      "line": 330,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.00857372693929,
+      "final_residual": 0.00776959814723
+    },
+    {
+      "time": 8.93202e-12,
+      "line": 392,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0100538434667,
+      "final_residual": 0.00887973544939
+    },
+    {
+      "time": 1.19175e-11,
+      "line": 454,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0116862600382,
+      "final_residual": 0.0104550966804
+    },
+    {
+      "time": 1.54662e-11,
+      "line": 516,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0146878849947,
+      "final_residual": 0.0126689210734
+    },
+    {
+      "time": 1.97577e-11,
+      "line": 578,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0169839407133,
+      "final_residual": 0.0149047719031
+    },
+    {
+      "time": 2.49075e-11,
+      "line": 640,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0177684728537,
+      "final_residual": 0.0173887950294
+    },
+    {
+      "time": 3.11608e-11,
+      "line": 702,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0254450307891,
+      "final_residual": 0.0209417388909
+    },
+    {
+      "time": 3.88353e-11,
+      "line": 764,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0263206553425,
+      "final_residual": 0.0250344772934
+    },
+    {
+      "time": 4.77889e-11,
+      "line": 826,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0359192010742,
+      "final_residual": 0.0311975013235
+    },
+    {
+      "time": 5.86611e-11,
+      "line": 888,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0377048507346,
+      "final_residual": 0.03551317763
+    },
+    {
+      "time": 7.15101e-11,
+      "line": 950,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0517969131501,
+      "final_residual": 0.0427231444068
+    },
+    {
+      "time": 8.75713e-11,
+      "line": 1012,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0635932310212,
+      "final_residual": 0.0555243208916
+    },
+    {
+      "time": 1.06309e-10,
+      "line": 1074,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0752275471577,
+      "final_residual": 0.0658238533984
+    },
+    {
+      "time": 1.29732e-10,
+      "line": 1136,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0982259798682,
+      "final_residual": 0.0808489251248
+    },
+    {
+      "time": 1.53155e-10,
+      "line": 1198,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0858486483555,
+      "final_residual": 0.0731000775471
+    },
+    {
+      "time": 1.76577e-10,
+      "line": 1260,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.0820671640344,
+      "final_residual": 0.0749209740037
+    },
+    {
+      "time": 2e-10,
+      "line": 1322,
+      "field": "T",
+      "solver": "smoothSolver",
+      "iterations": 1000,
+      "initial_residual": 0.086428196222,
+      "final_residual": 0.0724323947756
+    }
+  ],
+  "cap_hit_count": 20,
+  "interpretation": "Iteration-cap hits are not convergence; normalized residuals only have meaning within their equation and settings."
+}

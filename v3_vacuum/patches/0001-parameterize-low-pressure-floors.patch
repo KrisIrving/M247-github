@@ -1,0 +1,148 @@
+diff --git a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+index 365b55b4..2a7be4a9 100644
+--- a/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
++++ b/applications/solvers/compressibleLaserbeamFoam/multiphaseMixtureThermo/multiphaseMixtureThermo.C
+@@ -149,6 +149,21 @@ Foam::multiphaseMixtureThermo::multiphaseMixtureThermo
+     alphas_.write();
+     correct();                  // therm    o (phase densities) are valid after this
+ 
++    Info<< "Low-pressure numerical controls:" << nl
++        << "    rhoMinEOS                  = "
++        << lookupOrDefault<scalar>("rhoMinEOS", 1e-3) << " kg/m3" << nl
++        << "    pSmallSat                  = "
++        << lookupOrDefault<scalar>("pSmallSat", 1.0) << " Pa" << nl
++        << "    phaseChangeRhoFloor        = "
++        << lookupOrDefault<scalar>("phaseChangeRhoFloor", 0.01) << " kg/m3" << nl
++        << "    partialMassRhoFloor        = "
++        << lookupOrDefault<scalar>("partialMassRhoFloor", 1e-3) << " kg/m3" << nl
++        << "    recoveryRhoFloor           = "
++        << lookupOrDefault<scalar>("recoveryRhoFloor", 1e-3) << " kg/m3" << nl
++        << "    implicitCouplingPressureFloor = "
++        << lookupOrDefault<scalar>("implicitCouplingPressureFloor", 1e4) << " Pa"
++        << endl;
++
+          c_.setSize(phases_.size());
+     c0_.setSize(phases_.size());
+ 
+@@ -406,13 +421,22 @@ void Foam::multiphaseMixtureThermo::correct()
+ 
+ void Foam::multiphaseMixtureThermo::correctRho(const volScalarField& dp)
+ {
++    const scalar rhoMinEOSValue
++    (
++        lookupOrDefault<scalar>("rhoMinEOS", 1e-3)
++    );
++
+     for (phaseModel& phase : phases_)
+     {
+         volScalarField& rhoPh = phase.thermo().rho();
+         rhoPh += phase.thermo().psi()*dp;
+         // was 1e-4.. 1/rho feeds the p matrix coefficients and the extra
+         // decade of conditioning bought nothing, match the other floors
+-        rhoPh = max(rhoPh, dimensionedScalar("rhoMinEOS", dimDensity, 1e-3));
++        rhoPh = max
++        (
++            rhoPh,
++            dimensionedScalar("rhoMinEOS", dimDensity, rhoMinEOSValue)
++        );
+     }
+ }
+ 
+@@ -1961,7 +1985,15 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+                                 (
+                                     p_,
+                                     dimensionedScalar
+-                                    ("pSmallSat", P0.dimensions(), 1.0)
++                                    (
++                                        "pSmallSat",
++                                        P0.dimensions(),
++                                        phasedictionary.getOrDefault<scalar>
++                                        (
++                                            "pSmallSat",
++                                            1.0
++                                        )
++                                    )
+                                 )
+                                /(
+                                     max
+@@ -2366,7 +2398,16 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+     );
+ 
+     {
+-        const dimensionedScalar rhoFloorY("rhoFloorY", dimDensity, 1e-3);
++        const dimensionedScalar rhoFloorY
++        (
++            "rhoFloorY",
++            dimDensity,
++            phasedictionary.getOrDefault<scalar>
++            (
++                "partialMassRhoFloor",
++                1e-3
++            )
++        );
+         label i = 0;
+         for (phaseModel& ph : phases_)
+         {
+@@ -2785,7 +2826,16 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+         //  once per step with last steps fluxes while p moves by bars at the spot)
+             //  so a defect builds every step.....
+ 
+-    const dimensionedScalar rhoMinRec("rhoMinRec", dimDensity, 1e-3);
++    const dimensionedScalar rhoMinRec
++    (
++        "rhoMinRec",
++        dimDensity,
++        phasedictionary.getOrDefault<scalar>
++        (
++            "recoveryRhoFloor",
++            1e-3
++        )
++    );
+ 
+     // closure trust
+     //   closureGasFracMin: the gas mass-balance must explain at least this
+@@ -3034,6 +3084,11 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+     {
+         const scalar implicitVolLimit =
+             phasedictionary.getOrDefault<scalar>("implicitVolLimit", 0.2);
++        const scalar implicitCouplingPressureFloor =
++            phasedictionary.getOrDefault<scalar>
++            (
++                "implicitCouplingPressureFloor", 1e4
++            );
+ 
+         scalarField& vpI = vDotPptr->primitiveFieldRef();
+         const scalarField& pI = p_.primitiveField();
+@@ -3042,7 +3097,12 @@ Foam::tmp<Foam::volScalarField> Foam::multiphaseMixtureThermo::solveAlphas
+         forAll(vpI, celli)
+         {
+             const scalar kPmax =
+-                implicitVolLimit*rDeltaT/Foam::max(pI[celli], scalar(1e4));
++                implicitVolLimit*rDeltaT
++               /Foam::max
++                (
++                    pI[celli],
++                    implicitCouplingPressureFloor
++                );
+             if (vpI[celli] > kPmax)
+             {
+                 vpI[celli] = kPmax;
+diff --git a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
+index c12e4eed..1ec8d4dd 100644
+--- a/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
++++ b/applications/solvers/compressibleLaserbeamFoam/setDeltaT_.H
+@@ -15,8 +15,12 @@ if (adjustTimeStep)
+ 
+     scalar acousticCoNum = 0.0;
+     {
+-        const volScalarField pSafe(max(p, dimensionedScalar(dimPressure, 1e4)));
+-const volScalarField c
++        const scalar acousticPressureFloor =
++            runTime.controlDict().getOrDefault<scalar>
++            ("acousticPressureFloor", 1e4);
++        const volScalarField pSafe
++            (max(p, dimensionedScalar(dimPressure, acousticPressureFloor)));
++        const volScalarField c
+ (
+     sqrt(max(mixture.gamma()*pSafe/max(mixture.rho(), dimensionedScalar(dimDensity, SMALL)),
+              dimensionedScalar(sqr(dimVelocity), Zero)))

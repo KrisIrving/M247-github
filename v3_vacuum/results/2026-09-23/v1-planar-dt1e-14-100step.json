@@ -1,0 +1,63 @@
+{
+  "status": "NEEDS_REVIEW",
+  "scope": "planar source/oracle rate and paired partial-mass balance; not a physical M247 validation",
+  "case": "/home/kris/OpenFOAM/kris-v2512/v3-validation/v1-planar-v4",
+  "source_sha": "3c93f2657e089e22e9a8298648292969e85a4bad",
+  "parameters": {
+    "T_K": 2000.0,
+    "p_Pa": 0.6,
+    "P0_Pa": 100000.0,
+    "Tboil_K": 2900.0,
+    "molar_mass_kg_mol": 0.05,
+    "latent_heat_J_kg": 1000000.0,
+    "effective_area_m2": 3e-08
+  },
+  "oracle": {
+    "HK_flux_kg_m2_s": 27.20727452416957,
+    "expected_integrated_rate_kg_s": 8.16218235725087e-07,
+    "first_CFD_integrated_rate_kg_s": 8.16218235725e-07,
+    "first_relative_error": 1.0649940470240933e-13
+  },
+  "run": {
+    "completed": true,
+    "steps": 100,
+    "time_end_s": 1e-12,
+    "energy_mass_volume_cap_totals": {
+      "clamp_energy": 0,
+      "clamp_mass": 0,
+      "clamp_volume": 0
+    },
+    "solver_iteration_cap_hits": 0,
+    "paired_mass_relative_drift": 0.0,
+    "max_per_step_transfer_relative_error": 8.699100054464688e-10,
+    "steps_with_closure_capped_cells": 26,
+    "max_volume_closure_abs_deviation": 0.439025545949
+  },
+  "latent_energy": {
+    "integrated_latent_sink_W": 0.8162182357262936,
+    "source_mass_times_L_W": 0.8162182357250001,
+    "relative_identity_error": 1.584773274321431e-12,
+    "sign": "positive source means sink because TEqn contains -mass_dot"
+  },
+  "checks": {
+    "completed": true,
+    "has_rates_every_step": true,
+    "first_step_hk_relative_error_le_5pct": true,
+    "no_energy_mass_volume_rate_caps": true,
+    "pair_mass_drift_le_1e-8": true,
+    "per_step_phase_transfer_le_1pct": true,
+    "latent_source_mass_times_L_identity_le_5pct": true,
+    "no_closure_volume_caps_and_defect_le_5pct": false,
+    "zero_linear_iteration_cap_hits": true
+  },
+  "transfer_check_count": 99,
+  "worst_transfer_check": {
+    "time_s": 4e-14,
+    "source_mass_kg": 8.16193560169e-21,
+    "vapour_gain_kg": 8.161935600000082e-21,
+    "liquid_loss_kg": 0.0,
+    "vapour_relative_error": 2.0704865176613882e-10,
+    "liquid_relative_error": 1.0
+  }
+}
+

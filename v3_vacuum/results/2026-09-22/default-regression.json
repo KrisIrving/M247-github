@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "scope": "official mesh, specified duration only",
+  "endTime": 2e-11,
+  "fields": {
+    "p": {
+      "upstream_min": 99959.3271809,
+      "upstream_max": 117963.356194,
+      "patched_min": 99959.3271809,
+      "patched_max": 117963.356194,
+      "max_abs_difference": 0.0
+    },
+    "rho": {
+      "upstream_min": 1.15728028977,
+      "upstream_max": 5000.00268029,
+      "patched_min": 1.15728028977,
+      "patched_max": 5000.00268029,
+      "max_abs_difference": 0.0
+    },
+    "T": {
+      "upstream_min": 299.999304316,
+      "upstream_max": 359.807250567,
+      "patched_min": 299.999304316,
+      "patched_max": 359.807250567,
+      "max_abs_difference": 0.0
+    },
+    "U": {
+      "upstream_min": -1.34830809336,
+      "upstream_max": 0.961641544833,
+      "patched_min": -1.34830809336,
+      "patched_max": 0.961641544833,
+      "max_abs_difference": 0.0
+    },
+    "alpha.air": {
+      "upstream_min": 0.0,
+      "upstream_max": 1.0,
+      "patched_min": 0.0,
+      "patched_max": 1.0,
+      "max_abs_difference": 0.0
+    },
+    "alpha.metal1": {
+      "upstream_min": 0.0,
+      "upstream_max": 1.0,
+      "patched_min": 0.0,
+      "patched_max": 1.0,
+      "max_abs_difference": 0.0
+    },
+    "alpha.metal1vapour": {
+      "upstream_min": 0.0,
+      "upstream_max": 0.0,
+      "patched_min": 0.0,
+      "patched_max": 0.0,
+      "max_abs_difference": 0.0
+    },
+    "c.air": {
+      "upstream_min": 0.0,
+      "upstream_max": 1.15862747518,
+      "patched_min": 0.0,
+      "patched_max": 1.15862747518,
+      "max_abs_difference": 0.0
+    },
+    "c.metal1": {
+      "upstream_min": 0.0,
+      "upstream_max": 5000.00006404,
+      "patched_min": 0.0,
+      "patched_max": 5000.00006404,
+      "max_abs_difference": 0.0
+    },
+    "c.metal1vapour": {
+      "upstream_min": 0.0,
+      "upstream_max": 0.0,
+      "patched_min": 0.0,
+      "patched_max": 0.0,
+      "max_abs_difference": 0.0
+    },
+    "mass_dot": {
+      "upstream_min": 0.0,
+      "upstream_max": 9775.19892579,
+      "patched_min": 0.0,
+      "patched_max": 9775.19892579,
+      "max_abs_difference": 0.0
+    }
+  },
+  "phase_masses": {
+    "air": {
+      "upstream_kg": 1.4257893483863564e-12,
+      "patched_kg": 1.4257893483863564e-12
+    },
+    "metal1": {
+      "upstream_kg": 8.847050419560124e-09,
+      "patched_kg": 8.847050419560124e-09
+    },
+    "metal1vapour": {
+      "upstream_kg": 0.0,
+      "patched_kg": 0.0
+    }
+  },
+  "timestep_count": 9,
+  "timestep_histories_equal": true,
+  "errors": []
+}
