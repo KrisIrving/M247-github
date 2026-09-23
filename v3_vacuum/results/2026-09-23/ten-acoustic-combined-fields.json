@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "case": "/home/kris/OpenFOAM/kris-v2512/v3-validation/long-reservoir-10acoustic-v2/case_combined_krylov",
+  "scope": "stationary reservoir screen; written internal cell fields",
+  "endTime": 3e-06,
+  "last_solver_time": 3e-06,
+  "written_times_checked": 10,
+  "rho_expected": 2.1462859870811836e-06,
+  "field_extrema_all_written_times": {
+    "p": {
+      "min": 0.599999999991,
+      "max": 0.600000000043
+    },
+    "p_rgh": {
+      "min": 0.599999999991,
+      "max": 0.600000000043
+    },
+    "rho": {
+      "min": 2.14628406437e-06,
+      "max": 2.14628406437e-06
+    },
+    "T": {
+      "min": 1343.14999998,
+      "max": 1343.1500001
+    },
+    "U": {
+      "min": 1.2458735469091965e-17,
+      "max": 2.1421880067276507e-11
+    },
+    "alpha.air": {
+      "min": 1.0,
+      "max": 1.0
+    },
+    "alpha.metal1": {
+      "min": 0.0,
+      "max": 0.0
+    },
+    "alpha.metal1vapour": {
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "active_controls": {
+    "rhoMinEOS": 1e-08,
+    "pSmallSat": 0.06,
+    "phaseChangeRhoFloor": 1e-07,
+    "partialMassRhoFloor": 1e-08,
+    "recoveryRhoFloor": 1e-08,
+    "implicitCouplingPressureFloor": 0.06,
+    "acousticPressureFloor": 0.06,
+    "pMin": 0.06
+  },
+  "timestep": {
+    "count": 30019,
+    "min": 1.2e-12,
+    "max": 1.0001124293e-10
+  },
+  "linear_solves_at_1000_iterations": 0,
+  "floor_interpretation": "p/rho can be compared with guards; inactive phase-change branches are untested",
+  "errors": []
+}\n

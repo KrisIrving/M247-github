@@ -12,7 +12,7 @@ from pathlib import Path
 from analyse_case import field_values, NUMBER
 
 
-def compare(a, b):
+def compare(a, b, allow_fv_solution=False):
     errors, fields, masses, histories = [], {}, {}, []
     for case in (a, b):
         log = (case / 'log.compressibleLaserbeamFoam').read_text()
@@ -33,6 +33,8 @@ def compare(a, b):
         if names_a != names_b:
             errors.append(f'Different input inventories: {directory}')
         for name in names_a & names_b:
+            if allow_fv_solution and directory == 'system' and name.as_posix() == 'fvSolution':
+                continue
             if (a/directory/name).read_bytes() != (b/directory/name).read_bytes():
                 errors.append(f'Different input: {directory}/{name}')
     for case in (a, b):
@@ -77,9 +79,11 @@ def main():
     p.add_argument('upstream', type=Path)
     p.add_argument('patched', type=Path)
     p.add_argument('--json', type=Path)
+    p.add_argument('--allow-fv-solution', action='store_true',
+                   help='Permit a controlled solver-only difference in system/fvSolution')
     args = p.parse_args()
     try:
-        report = compare(args.upstream, args.patched)
+        report = compare(args.upstream, args.patched, args.allow_fv_solution)
     except (OSError, ValueError, TypeError, AttributeError) as exc:
         report = {'status': 'FAIL', 'errors': [str(exc)]}
     output = json.dumps(report, indent=2, allow_nan=False)

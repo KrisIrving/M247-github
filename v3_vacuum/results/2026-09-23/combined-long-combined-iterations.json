@@ -1,0 +1,181 @@
+{
+  "log": "/home/kris/OpenFOAM/kris-v2512/v3-validation/long-reservoir-v1/case_combined_krylov/log.compressibleLaserbeamFoam",
+  "iteration_cap": 1000,
+  "status": "NO_CAP_HITS",
+  "solves_by_equation_and_solver": {
+    "T [DILUPBiCGStab]": {
+      "solves": 219,
+      "cap_hits": 0,
+      "max_iterations": 26,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "Ux [smoothSolver]": {
+      "solves": 219,
+      "cap_hits": 0,
+      "max_iterations": 56,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "Uy [smoothSolver]": {
+      "solves": 219,
+      "cap_hits": 0,
+      "max_iterations": 70,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "Uz [smoothSolver]": {
+      "solves": 219,
+      "cap_hits": 0,
+      "max_iterations": 60,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "p_rgh [DICPCG]": {
+      "solves": 2409,
+      "cap_hits": 0,
+      "max_iterations": 1,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "p_rgh [GAMGPCG]": {
+      "solves": 219,
+      "cap_hits": 0,
+      "max_iterations": 1,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    },
+    "pcorr [GAMGPCG]": {
+      "solves": 4,
+      "cap_hits": 0,
+      "max_iterations": 0,
+      "max_hit_final_residual": 0.0,
+      "worst_hit_initial_residual": 0.0
+    }
+  },
+  "steps_with_most_cap_hits": [
+    {
+      "time": 1.19976e-12,
+      "deltaT": 1.19976004799e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 2.63982e-12,
+      "deltaT": 1.44005780976e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 4.36764e-12,
+      "deltaT": 1.72782022677e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 6.4421e-12,
+      "deltaT": 2.07446191467e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 8.93094e-12,
+      "deltaT": 2.48883632959e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.1916e-11,
+      "deltaT": 2.98511103999e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.54982e-11,
+      "deltaT": 3.58213324798e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.97936e-11,
+      "deltaT": 4.29545848351e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 2.49504e-11,
+      "deltaT": 5.15678739818e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 3.11418e-11,
+      "deltaT": 6.19137797336e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 3.85715e-11,
+      "deltaT": 7.42965356803e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 4.7487e-11,
+      "deltaT": 8.91558428164e-12,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 5.81565e-11,
+      "deltaT": 1.06694697141e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 7.09318e-11,
+      "deltaT": 1.2775286105e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 8.62419e-11,
+      "deltaT": 1.53100650941e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.04643e-10,
+      "deltaT": 1.84015205458e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.26682e-10,
+      "deltaT": 2.20390304212e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.53067e-10,
+      "deltaT": 2.63847547296e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 1.84911e-10,
+      "deltaT": 3.18436695012e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    },
+    {
+      "time": 2.22725e-10,
+      "deltaT": 3.78143575327e-11,
+      "linear_solves": 16,
+      "cap_hits": 0
+    }
+  ],
+  "cap_hit_examples": [],
+  "cap_hit_count": 0,
+  "interpretation": "Iteration-cap hits are not convergence; normalized residuals only have meaning within their equation and settings."
+}

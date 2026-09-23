@@ -15,12 +15,13 @@ mkdir -p "$OUT_DIR" || exit 1
 for part in initial constant system; do
     cp -a "$LBF_DIR/tutorials/compressiblelaserbeamFoam/LPBF_small_vapour/$part" "$OUT_DIR/" || exit 1
 done
-python3 - "$OUT_DIR" "$END_TIME" <<'PY'
+python3 - "$OUT_DIR" "$END_TIME" "${V3_T_SOLVER_PROBE:-0}" <<'PY'
 from pathlib import Path
 import re
 import sys
 p = Path(sys.argv[1]) / 'system/controlDict'
 end = float(sys.argv[2])
+probe_temperature = sys.argv[3] == '1'
 if not 0 < end <= 1e-4:
     raise SystemExit('endTime must be in (0, 1e-4]')
 s = p.read_text()
@@ -29,6 +30,13 @@ for key, value in [('endTime', end), ('writeInterval', end), ('writePrecision', 
     if n != 1:
         raise SystemExit(f'Expected exactly one {key}')
 p.write_text(s)
+if probe_temperature:
+    solution = Path(sys.argv[1]) / 'system/fvSolution'
+    text = solution.read_text()
+    # TFinal takes precedence over T in this solver; set both for clarity.
+    for key in ('T', 'TFinal'):
+        text += f'''\n{key}\n{{\n    solver          PBiCGStab;\n    preconditioner  DILU;\n    tolerance       1e-10;\n    relTol          0.05;\n}}\n'''
+    solution.write_text(text)
 PY
 if [ "$?" -ne 0 ]; then exit 1; fi
 cat > "$OUT_DIR/Allrun" <<'EOF'
