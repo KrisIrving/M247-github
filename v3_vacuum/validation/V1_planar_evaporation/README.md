@@ -39,3 +39,26 @@ Short-run evidence establishes the source/oracle and mass/latent coupling checks
 
 Machine-readable reports are in `../../results/2026-09-23/v1-planar-*.json`. Full OpenFOAM fields and logs remain in the local validation workspace and are not committed.
 
+## Closure-feedback diagnosis
+
+Controlled probes at the same 2000 K, 0.6 Pa, 1e-14 s setup narrow the instability to the volume-closure feedback path:
+
+| Control | Result |
+|---|---|
+| Set both HK accommodation coefficients to zero; retain default closure feedback | Still jumps to 44.84% defect at step 3. HK evaporation is not required to trigger it. |
+| Set `closureRelax=0`; keep HK active for 100 steps | Maximum defect stays 1.508%, no rate/solver caps, and paired mass/latent identities pass. This is a diagnostic ablation, **not** an accepted production setting because it disables the closure correction being tested. |
+| Set `closureRelax=0.1`; keep HK active for 100 steps | Peak defect falls to 17.63%, with no closure caps, but still fails the 5% criterion. |
+| Set `closureVolLimit=1` | The step-3 jump remains 43.90%; the larger cap only accelerates recovery (27.26% defect by step 5). The cap does not prevent the trigger. |
+| Set `implicitVolLimit=0` | The same 43.90% step-3 defect remains. This disables/caps the HK pressure-coupling contribution, but does not disable the separate closure Jacobian, which is added later in the source. |
+
+These results rule out the HK mass source and its implicit pressure coupling as the trigger. They implicate the closure feedback as a whole, but do not yet distinguish its explicit `PCR` correction from its closure-specific pressure Jacobian. Do not promote `closureRelax=0` or `0.1` as a fix. The next source experiment should expose those two closure terms independently, then check the feedback sign and scaling against a closed stationary EOS case before rerunning the 100-step benchmark.
+
+Run the diagnostic matrix on the patched v2512 environment with:
+
+```bash
+source v3_vacuum/scripts/env_v2512.sh patched
+bash v3_vacuum/validation/V1_planar_evaporation/run_closure_diagnostics.sh
+```
+
+The script accepts an output directory followed by selected probes (`noHK`, `noClosure`, `relax01`, `implicitOff`, `largeClosureCap`, `noClosure100`, `relax01_100`). `audit_closure_fields.py CASE --times 0 1e-14 2e-14 3e-14` summarizes p/T/rho and phase fields around the onset. Diagnostic JSON reports are stored in `../../results/2026-09-23/v1-diag-*.json`; `closureRelax=0` reports are deliberately marked NEEDS_REVIEW by the analyzer because a V1 PASS requires feedback to be enabled.
+

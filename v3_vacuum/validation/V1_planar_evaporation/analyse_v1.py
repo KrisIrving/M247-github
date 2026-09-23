@@ -97,6 +97,12 @@ def analyse(args):
     mass_step_error = max((c["vapour_relative_error"] for c in transfer_checks), default=None)
     closure_caps = sum((s["closure_capped_cells"] or 0) > 0 for s in steps)
     closure_dev = max((s["closure_max_abs_dev"] for s in steps if s["closure_max_abs_dev"] is not None), default=None)
+    thermo_path = args.case / "constant/thermophysicalProperties"
+    thermo_text = thermo_path.read_text(errors="replace") if thermo_path.exists() else ""
+    closure_settings = {}
+    for key, default in (("closureRelax", 0.5), ("closureVolLimit", 0.02), ("implicitVolLimit", 0.2)):
+        match = re.search(rf"^\s*{key}\s+({NUMBER})\s*;", thermo_text, re.M)
+        closure_settings[key] = float(match[1]) if match else default
     solver_cap_hits = len(re.findall(r"No Iterations 1000\b", log))
     latent_report = None
     time_dirs = sorted((p for p in args.case.iterdir() if p.is_dir() and re.fullmatch(NUMBER, p.name) and float(p.name) > 0), key=lambda p: float(p.name))
@@ -116,6 +122,7 @@ def analyse(args):
     checks = {
         "completed": complete,
         "has_rates_every_step": rates_ok,
+        "closure_feedback_enabled": closure_settings["closureRelax"] > 0,
         "first_step_hk_relative_error_le_5pct": first_error is not None and first_error <= 0.05,
         "no_energy_mass_volume_rate_caps": all(v == 0 for v in caps.values()),
         "pair_mass_drift_le_1e-8": total_drift is not None and total_drift <= 1e-8,
@@ -137,7 +144,13 @@ def analyse(args):
         "run": {"completed": complete, "steps": len(steps), "time_end_s": steps[-1]["time_s"] if steps else None,
                 "energy_mass_volume_cap_totals": caps, "solver_iteration_cap_hits": solver_cap_hits,
                 "paired_mass_relative_drift": total_drift, "max_per_step_transfer_relative_error": mass_step_error,
-                "steps_with_closure_capped_cells": closure_caps, "max_volume_closure_abs_deviation": closure_dev},
+                "steps_with_closure_capped_cells": closure_caps, "max_volume_closure_abs_deviation": closure_dev,
+                "closure_settings": closure_settings},
+        "closure_trajectory": [{"time_s": s["time_s"],
+                                 "net_hk_kg_s": (s["evap_kg_s"] + s["cond_kg_s"])
+                                 if s["evap_kg_s"] is not None and s["cond_kg_s"] is not None else None,
+                                 "max_abs_volume_defect": s["closure_max_abs_dev"],
+                                 "capped_cells": s["closure_capped_cells"]} for s in steps],
         "latent_energy": latent_report,
         "checks": checks,
         "transfer_check_count": len(transfer_checks),
