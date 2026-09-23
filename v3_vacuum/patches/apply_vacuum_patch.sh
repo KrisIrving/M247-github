@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Apply the first LaserBeamFoam V3 vacuum-development patch.
+# Apply the audited LaserBeamFoam V3 vacuum-development patch series.
 # This script refuses to apply to an unknown upstream commit.
 #
 # Usage:
@@ -20,7 +20,10 @@ if [ ! -d "$LBF_DIR/.git" ]; then
 fi
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-PATCH="$HERE/0001-parameterize-low-pressure-floors.patch"
+PATCHES=(
+    "$HERE/0001-parameterize-low-pressure-floors.patch"
+    "$HERE/0002-parameterize-closure-feedback-terms.patch"
+)
 
 CURRENT_SHA="$(git -C "$LBF_DIR" rev-parse HEAD)" || exit 2
 
@@ -36,11 +39,15 @@ if [ "$CURRENT_SHA" != "$EXPECTED_SHA" ]; then
 fi
 
 echo
-echo "Checking patch..."
-git -C "$LBF_DIR" apply --check "$PATCH" || exit 4
+echo "Checking patch series..."
+for patch in "${PATCHES[@]}"; do
+    git -C "$LBF_DIR" apply --check "$patch" || exit 4
+done
 
-echo "Applying patch..."
-git -C "$LBF_DIR" apply "$PATCH" || exit 4
+echo "Applying patch series..."
+for patch in "${PATCHES[@]}"; do
+    git -C "$LBF_DIR" apply "$patch" || exit 4
+done
 
 echo
 echo "Checking resulting diff..."
@@ -50,5 +57,6 @@ echo
 echo "Patch applied. Review with:"
 echo "  git -C '$LBF_DIR' diff"
 echo
-echo "Do not treat this patch as validated until it compiles under OpenFOAM v2512"
-echo "and passes the upstream-default regression smoke test."
+echo "Review and compile the patch series under OpenFOAM v2512. Patch 0002"
+echo "preserves the upstream closure behavior by default; opt-out experiments"
+echo "remain diagnostic until the full V1 matrix and physical validation pass."

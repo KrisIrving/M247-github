@@ -35,6 +35,14 @@ for probe in "${PROBES[@]}"; do
         noClosure) prepare_probe v1-probe-noClosure 5 'closureRelax 0;' ;;
         relax01) prepare_probe v1-probe-relax01 5 'closureRelax 0.1;' ;;
         implicitOff) prepare_probe v1-probe-implicitOff 5 'implicitVolLimit 0;' ;;
+        explicitOnly) prepare_probe v1-probe-explicitOnly 5 'closurePressureJacobian false;' ;;
+        explicitOnly100) prepare_probe v1-probe-explicitOnly100 100 'closurePressureJacobian false;' ;;
+        jacobianOnly) prepare_probe v1-probe-jacobianOnly 5 'closureExplicitVolumeSource false;' ;;
+        patchedExplicitOnly) prepare_probe v1-patched-explicitOnly 5 'closurePressureJacobian false;' ;;
+        patchedJacobianOnly) prepare_probe v1-patched-jacobianOnly 5 'closureExplicitVolumeSource false;' ;;
+        patchedExplicitOnly100) prepare_probe v1-patched-explicitOnly100 100 'closurePressureJacobian false;' ;;
+        patchedDefault) prepare_probe v1-patched-default 5 'closureExplicitVolumeSource true;' 'closurePressureJacobian true;' ;;
+        patchedUnconfigured) prepare_probe v1-patched-unconfigured 5 ;;
         largeClosureCap) prepare_probe v1-probe-largeClosureCap 5 'closureVolLimit 1;' ;;
         noClosure100) prepare_probe v1-probe-noClosure100 100 'closureRelax 0;' ;;
         relax01_100) prepare_probe v1-probe-relax01-100 100 'closureRelax 0.1;' ;;
@@ -43,4 +51,3 @@ for probe in "${PROBES[@]}"; do
 done
 
 echo "Completed closure probes under $OUT_ROOT"
-

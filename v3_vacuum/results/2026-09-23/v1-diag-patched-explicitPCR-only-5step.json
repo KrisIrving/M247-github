@@ -1,0 +1,115 @@
+{
+  "status": "NEEDS_REVIEW",
+  "scope": "planar source/oracle rate and paired partial-mass balance; not a physical M247 validation",
+  "case": "/home/kris/OpenFOAM/kris-v2512/v3-validation/v1-patched-explicitOnly",
+  "source_sha": "3c93f2657e089e22e9a8298648292969e85a4bad",
+  "parameters": {
+    "T_K": 2000.0,
+    "p_Pa": 0.6,
+    "P0_Pa": 100000.0,
+    "Tboil_K": 2900.0,
+    "molar_mass_kg_mol": 0.05,
+    "latent_heat_J_kg": 1000000.0,
+    "effective_area_m2": 1.5e-08,
+    "geometry": {
+      "plane_area_m2": 1.5e-08,
+      "effective_area_m2": 1.5e-08,
+      "domain_volume_m3": 3e-12,
+      "cell_volume_m3": 4.6875e-15,
+      "nz": 40.0,
+      "dz_m": 5e-06,
+      "interface_thickness_m": 1e-05,
+      "diffuse_band_m": 1e-05,
+      "mixed_layers": 2.0,
+      "floor_scale": 1.0
+    }
+  },
+  "oracle": {
+    "HK_flux_kg_m2_s": 27.20727452416957,
+    "expected_integrated_rate_kg_s": 4.081091178625435e-07,
+    "first_CFD_integrated_rate_kg_s": 4.08109117863e-07,
+    "first_relative_error": 1.1185680471971688e-12
+  },
+  "run": {
+    "completed": true,
+    "steps": 5,
+    "time_end_s": 5e-14,
+    "energy_mass_volume_cap_totals": {
+      "clamp_energy": 0,
+      "clamp_mass": 0,
+      "clamp_volume": 0
+    },
+    "solver_iteration_cap_hits": 0,
+    "paired_mass_relative_drift": 0.0,
+    "max_per_step_transfer_relative_error": 1.5364065823752092e-09,
+    "steps_with_closure_capped_cells": 0,
+    "max_volume_closure_abs_deviation": 0.0150800853541,
+    "closure_settings": {
+      "closureRelax": 0.5,
+      "closureVolLimit": 0.02,
+      "implicitVolLimit": 0.2,
+      "closureExplicitVolumeSource": true,
+      "closurePressureJacobian": false
+    }
+  },
+  "closure_trajectory": [
+    {
+      "time_s": 1e-14,
+      "net_hk_kg_s": 4.08109117863e-07,
+      "max_abs_volume_defect": 0.0150800853541,
+      "capped_cells": 0
+    },
+    {
+      "time_s": 2e-14,
+      "net_hk_kg_s": 4.08089782245e-07,
+      "max_abs_volume_defect": 0.00663094856649,
+      "capped_cells": 0
+    },
+    {
+      "time_s": 3e-14,
+      "net_hk_kg_s": 4.08108393373e-07,
+      "max_abs_volume_defect": 0.00280354401351,
+      "capped_cells": 0
+    },
+    {
+      "time_s": 4e-14,
+      "net_hk_kg_s": 4.08108117721e-07,
+      "max_abs_volume_defect": 0.00104491837403,
+      "capped_cells": 0
+    },
+    {
+      "time_s": 5e-14,
+      "net_hk_kg_s": 4.08107856539e-07,
+      "max_abs_volume_defect": 0.000729642593435,
+      "capped_cells": 0
+    }
+  ],
+  "latent_energy": {
+    "integrated_latent_sink_W": 0.4081091178631468,
+    "source_mass_times_L_W": 0.40810911786299997,
+    "relative_identity_error": 3.5977386581195176e-13,
+    "sign": "positive source means sink because TEqn contains -mass_dot"
+  },
+  "checks": {
+    "completed": true,
+    "has_rates_every_step": true,
+    "closure_feedback_enabled": true,
+    "closure_terms_at_default": false,
+    "first_step_hk_relative_error_le_5pct": true,
+    "no_energy_mass_volume_rate_caps": true,
+    "pair_mass_drift_le_1e-8": true,
+    "per_step_phase_transfer_le_1pct": true,
+    "latent_source_mass_times_L_identity_le_5pct": true,
+    "no_closure_volume_caps_and_defect_le_5pct": true,
+    "zero_linear_iteration_cap_hits": true
+  },
+  "transfer_check_count": 4,
+  "worst_transfer_check": {
+    "time_s": 2e-14,
+    "source_mass_kg": 4.08089782245e-21,
+    "vapour_gain_kg": 4.080897820000072e-21,
+    "liquid_loss_kg": 0.0,
+    "vapour_relative_error": 6.003404625435937e-10,
+    "liquid_relative_error": 1.0
+  }
+}

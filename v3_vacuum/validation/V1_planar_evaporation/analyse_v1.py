@@ -100,9 +100,16 @@ def analyse(args):
     thermo_path = args.case / "constant/thermophysicalProperties"
     thermo_text = thermo_path.read_text(errors="replace") if thermo_path.exists() else ""
     closure_settings = {}
-    for key, default in (("closureRelax", 0.5), ("closureVolLimit", 0.02), ("implicitVolLimit", 0.2)):
+    for key, default in (("closureRelax", 0.5), ("closureVolLimit", 0.02),
+                         ("implicitVolLimit", 0.2),
+                         ("closureExplicitVolumeSource", True),
+                         ("closurePressureJacobian", True)):
         match = re.search(rf"^\s*{key}\s+({NUMBER})\s*;", thermo_text, re.M)
-        closure_settings[key] = float(match[1]) if match else default
+        bool_match = re.search(rf"^\s*{key}\s+(true|false)\s*;", thermo_text, re.M | re.I)
+        if isinstance(default, bool):
+            closure_settings[key] = bool_match[1].lower() == "true" if bool_match else default
+        else:
+            closure_settings[key] = float(match[1]) if match else default
     solver_cap_hits = len(re.findall(r"No Iterations 1000\b", log))
     latent_report = None
     time_dirs = sorted((p for p in args.case.iterdir() if p.is_dir() and re.fullmatch(NUMBER, p.name) and float(p.name) > 0), key=lambda p: float(p.name))
@@ -123,6 +130,7 @@ def analyse(args):
         "completed": complete,
         "has_rates_every_step": rates_ok,
         "closure_feedback_enabled": closure_settings["closureRelax"] > 0,
+        "closure_terms_at_default": closure_settings["closureExplicitVolumeSource"] and closure_settings["closurePressureJacobian"],
         "first_step_hk_relative_error_le_5pct": first_error is not None and first_error <= 0.05,
         "no_energy_mass_volume_rate_caps": all(v == 0 for v in caps.values()),
         "pair_mass_drift_le_1e-8": total_drift is not None and total_drift <= 1e-8,
@@ -186,4 +194,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
